@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "DKSDThietBi";
+}
+
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .content-wrapper {
+        flex: 1;
+    }
+
+    .main-footer {
+        flex-shrink: 0;
+        background-color: #ddeeff;
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: small;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Cán bộ quản lý thiết bị</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="demo2.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Đăng ký sử dụng thiết bị</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="container mt-5 wrapper mb-5">
+        <!--chú ý-->
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <form>
+                    <div class="form-group">
+                        <label for="fullName">Họ và tên: </label>
+                        <input type="text" class="form-control" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chucVu">Chức vụ:</label>
+                        <select class="form-control" id="chucVu" required>
+                            <option value="">Chọn chức vụ</option>
+                            <option value="Giám đốc">Giám Đốc</option>
+                            <option value="Phó giám đốc">Phó Giám Đốc</option>
+                            <option value="Trưởng phòng">Trưởng Phòng</option>
+                            <option value="Phó phòng">Phó Phòng</option>
+                            <option value="Nhân viên">Nhân Viên</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Phòng ban:</label>
+                        <select class="form-control" id="department" required>
+                            <option value="">Chọn phòng ban</option>
+                            <option value="Tổng hợp">Tổng hợp</option>
+                            <option value="Kế toán">Kế toán</option>
+                            <option value="Nhân sự">Nhân sự</option>
+                            <option value="Kỹ thuật">Kỹ thuật</option>
+                        </select>
+                    </div>
+                    <div class="my-3">
+                        <label for="ngayBanGiao">Ngày bàn giao:</label><br>
+                        <input type="date" id="ngayBanGiao">
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceName">Tên thiết bị:</label>
+                        <input type="text" class="form-control" id="deviceName">
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceType">Loại thiết bị:</label>
+                        <select class="form-control" id="deviceType">
+                            <option value="">Chọn loại thiết bị</option>
+                            <option value="chair">Bàn ghế</option>
+                            <option value="screen">Màn hình</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="airConditional">Máy điều hòa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Tình trạng:</label>
+                        <select class="form-control" id="status" required>
+                            <option value="">Chọn tình trạng</option>
+                            <option value="Sản phẩm mới">Sản phẩm mới</option>
+                            <option value="Đã qua sử dụng còn bảo hành">Đã qua sử dụng còn bảo hành</option>
+                            <option value="Đã qua sử dụng hết bảo hành">Đã qua sử dụng hết bảo hành</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Thêm thông tin</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-wrapper -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+
