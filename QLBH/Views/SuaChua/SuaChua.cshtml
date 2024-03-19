@@ -46,54 +46,178 @@
     <!-- Main content -->
     <div class="container wrapper mb-5">
         <form id="userForm">
-            <div class="form-group">
-                <label for="deviceName">Tên thiết bị:</label>
-                <input type="text" class="form-control" id="deviceName" required>
-            </div>
-            <div class="form-group">
-                <label for="deviceType">Loại thiết bị:</label>
-                <select class="form-control" id="deviceType">
-                    <option value="Bàn ghế">Bàn ghế</option>
-                    <option value="Màn hình">Màn hình</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Máy điều hòa">Máy điều hòa</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="baoHanh">Tình trạng bảo hành:</label>
-                <select class="form-control" id="baoHanh">
-                    <option value="Còn bảo hành">Còn bảo hành</option>
-                    <option value="Hết bảo hành">Hết bảo hành</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div>
-                    <label for="dateSend">Ngày gửi sửa chữa:</label>
-                    <input type="date" id="dateSend">
+            <div class="form-check-inline ">
+                <div class="form-group mx-2">
+                    <label for="deviceName">Tên thiết bị:</label>
+                    <input type="text" class="form-control" id="deviceName" required>
                 </div>
-                <div>
+                <div class="form-group mx-2">
+                    <label for="deviceType" class="mx-2">Loại thiết bị:</label>
+                    <select class="form-control" id="deviceType">
+                        <option value="Bàn ghế">Bàn ghế</option>
+                        <option value="Màn hình">Màn hình</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Máy điều hòa">Máy điều hòa</option>
+                    </select>
+                </div>
+                <div class="form-group mx-2">
+                    <label for="baoHanh">Tình trạng bảo hành:</label>
+                    <select class="form-control" id="baoHanh">
+                        <option value="Còn bảo hành">Còn bảo hành</option>
+                        <option value="Hết bảo hành">Hết bảo hành</option>
+                    </select>
+                </div>
+                <div class="form-group mx-2">
+                    <label for="dateSend">Tên thiết bị:</label>
+                    <input type="date" class="form-control" id="dateSend">
+                </div>
+                <div class="form-group">
                     <label for="datePicker">Ngày dự kiến sửa xong:</label>
-                    <input type="date" id="datePicker">
+                    <input type="date" class="form-control" id="datePicker">
                 </div>
             </div>
+        <div>
             <button type="submit" class="btn btn-primary">Đăng ký</button>
-        </form>
+        </div>
+    </form>
 
-        <table class="table table-bordered mt-2">
-            <thead>
-                <tr>
-                    <th scope="col">Tên thiết bị</th>
-                    <th scope="col">Loại thiết bị</th>
-                    <th scope="col">Tình trạng bảo hành</th>
-                    <th scope="col">Ngày gửi</th>
-                    <th scope="col">Ngày dự kiến</th>
-                </tr>
-            </thead>
-            <tbody id="userList">
-                <!-- Dữ liệu người dùng sẽ được thêm vào đây -->
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered mt-2">
+        <thead>
+            <tr>
+                <th scope="col">Tên thiết bị</th>
+                <th scope="col">Loại thiết bị</th>
+                <th scope="col">Tình trạng bảo hành</th>
+                <th scope="col">Ngày gửi</th>
+                <th scope="col">Ngày dự kiến</th>
+                <th scope="col">Sửa,Xóa,In</th>
+            </tr>
+        </thead>
+        <tbody id="userList">
+            <!-- Dữ liệu người dùng sẽ được thêm vào đây -->
+            <tr>
+                <td>Ghế Ergonomic Warrior Hero</td>
+                <td>Bàn ghế</td>
+                <td>Hết bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Iphone 15 Promax 256GB Natural Titanium</td>
+                <td>Điện thoại</td>
+                <td>Còn bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Laptop gaming MSI Katana 15 B13VFK</td>
+                <td>Máy tính</td>
+                <td>Còn bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Daikin Inverter 1 HP ATKF25XVMV</td>
+                <td>Máy điều hòa</td>
+                <td>Còn bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Ghế công thái học Sihoo M102C</td>
+                <td>Bàn ghế</td>
+                <td>Hết bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>S23 ultra 8/256GB Black</td>
+                <td>Điện thoại</td>
+                <td>Hết bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Bàn DXRacer Drifting C NEO</td>
+                <td>Bàn ghế</td>
+                <td>Còn bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Laptop gaming ASUS TUF Gaming A15</td>
+                <td>Máy tính</td>
+                <td>Hết bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Toshiba Inverter 1.5 HP RAS-H13H4KCVG-V</td>
+                <td>Máy điều hòa</td>
+                <td>Còn bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>Laptop gaming Lenovo LOQ 15IAX9</td>
+                <td>Máy tính</td>
+                <td>Còn bảo hành</td>
+                <td>2024-03-03</td>
+                <td>2024-04-03</td>
+                <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
 </div>
 <script>
     document.getElementById('userForm').addEventListener('submit', function (event) {
@@ -112,8 +236,14 @@
                   <td>${deviceType}</td>
                   <td>${baoHanh}</td>
                   <td>${dateSend}</td>
-                  <td>${datePicker}</td>
-                `;
+                  <td>${datePicker}</td> 
+                  <td class="actions">
+                    <i class="fas fa-edit edit-btn"></i>
+                    <i class="fas fa-trash-alt delete-btn"></i>
+                    <i class="fas fa-print print-btn"></i>
+                  </td>
+                    
+                  `;
 
         document.getElementById('userList').appendChild(newRow);
 
@@ -124,6 +254,18 @@
         document.getElementById('dateSend').value = '';
         document.getElementById('datePicker').value = '';
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var deleteButtons = document.querySelectorAll(".delete-btn");
+        deleteButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                var row = this.closest("tr");
+                if (confirm("Bạn có chắc chắn muốn xóa thông tin bảo hành này không?")) {
+                    row.remove();
+                }
+            });
+        });
+    }); 
 
 </script>
 <!-- /.content-wrapper -->

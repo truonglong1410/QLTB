@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <h2>Danh sách cán bộ</h2>
                 <div class="form-check-inline mb-3">
-                    <div class="form-group mr-3">
+                    <div class="form-group mr-4">
                         <label for="filterDepartment">Lọc theo phòng ban:</label>
                         <select class="form-control" id="filterDepartment">
                             <option value="">Tất cả</option>
@@ -20,7 +20,7 @@
                             <option value="Kỹ thuật">Kỹ thuật</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mr-4">
                         <label for="filterGender">Lọc theo giới tính:</label>
                         <select class="form-control" id="filterGender">
                             <option value="">Tất cả</option>
@@ -28,9 +28,18 @@
                             <option value="Nữ">Nữ</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="searchName">Tìm kiếm theo tên:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchName" placeholder="Nhập tên...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <table id="employeeTable" class="table">
+                <table id="employeeTable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Họ và tên</th>
@@ -38,6 +47,7 @@
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Phòng ban</th>
+                            <th>Sửa thông tin</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,8 +58,14 @@
                             <td>nguyenvana_01@gmail.com</td>
                             <td>0123456789</td>
                             <td>Tổng hợp</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
                         </tr>
                         <tr data-department="Kế toán" data-gender="Nữ">
                             <td>Trần Thị B</td>
@@ -57,8 +73,15 @@
                             <td>tranthib_02@gmail.com</td>
                             <td>0987654321</td>
                             <td>Kế toán</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
                         <tr data-department="Nhân sự" data-gender="Nam">
                             <td>Phạm Văn C</td>
@@ -66,8 +89,15 @@
                             <td>phamvanc_03@gmail.com</td>
                             <td>0365987412</td>
                             <td>Nhân sự</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
                         <tr data-department="Kỹ thuật" data-gender="Nữ">
                             <td>Nguyễn Thị D</td>
@@ -75,8 +105,15 @@
                             <td>nguyenthid_04@gmail.com</td>
                             <td>0123456789</td>
                             <td>Kỹ thuật</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
 
                         <tr data-department="Tổng hợp" data-gender="Nam">
@@ -85,8 +122,15 @@
                             <td>tranve_05@gmail.com</td>
                             <td>0987654321</td>
                             <td>Tổng hợp</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
 
                         <tr data-department="Nhân sự" data-gender="Nữ">
@@ -95,8 +139,15 @@
                             <td>lethif_06@gmail.com</td>
                             <td>0365987412</td>
                             <td>Nhân sự</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
 
                         <tr data-department="Kế toán" data-gender="Nam">
@@ -105,8 +156,15 @@
                             <td>phamvang_07@gmail.com</td>
                             <td>0123456789</td>
                             <td>Kế toán</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
 
                         <tr data-department="Tổng hợp" data-gender="Nữ">
@@ -115,8 +173,15 @@
                             <td>hoangthih_08@gmail.com</td>
                             <td>0987654321</td>
                             <td>Tổng hợp</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
                         <tr data-department="Kỹ thuật" data-gender="Nam">
                             <td>Trần Văn I</td>
@@ -124,8 +189,15 @@
                             <td>tranvi_09@gmail.com</td>
                             <td>0365987412</td>
                             <td>Kỹ thuật</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
 
                         <tr data-department="Kế toán" data-gender="Nữ">
@@ -134,8 +206,15 @@
                             <td>nguyenthik_10@gmail.com</td>
                             <td>0123456789</td>
                             <td>Kế toán</td>
-                            <td><a href="edit.php">Sửa</a></td>
-                            <td><button class="delete-btn">Xóa</button></td>
+                            <td>
+                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                </a>
+                                <button class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                </button>
+                            </td>
+                             
                         </tr>
 
                         <!-- Thêm các hàng dữ liệu khác tương tự -->
@@ -153,14 +232,18 @@
     $(document).ready(function () {
         // Bắt sự kiện thay đổi trong dropdown lọc phòng ban
         $('#filterDepartment').change(function () {
-            var selectedDepartment = $(this).val(); // Lấy giá trị đã chọn
-            filterEmployees(selectedDepartment, $('#filterGender').val()); // Gọi hàm lọc
+            filterEmployees($(this).val(), $('#filterGender').val());
         });
 
         // Bắt sự kiện thay đổi trong dropdown lọc giới tính
         $('#filterGender').change(function () {
-            var selectedGender = $(this).val(); // Lấy giá trị đã chọn
-            filterEmployees($('#filterDepartment').val(), selectedGender); // Gọi hàm lọc
+            filterEmployees($('#filterDepartment').val(), $(this).val());
+        });
+
+        // Bắt sự kiện click vào nút tìm kiếm
+        $('#searchButton').click(function () {
+            var searchText = $('#searchName').val().toLowerCase();
+            filterEmployeesBySearch(searchText);
         });
 
         // Hàm để lọc và hiển thị các cán bộ dựa trên phòng ban và giới tính
@@ -169,7 +252,6 @@
                 var rowDepartment = $(this).data('department');
                 var rowGender = $(this).data('gender');
 
-                // Kiểm tra nếu phòng ban hoặc giới tính khớp với lựa chọn hoặc là "Tất cả" thì hiển thị, ngược lại ẩn đi
                 if ((department === '' || rowDepartment === department) && (gender === '' || rowGender === gender)) {
                     $(this).show();
                 } else {
@@ -177,24 +259,31 @@
                 }
             });
         }
-    });
-    document.addEventListener("DOMContentLoaded", function () {
-        // Lấy tất cả các nút "Xóa"
-        var deleteButtons = document.querySelectorAll(".delete-btn");
 
-        // Duyệt qua từng nút và thêm sự kiện click
+        // Hàm để lọc và hiển thị các cán bộ dựa trên tên
+        function filterEmployeesBySearch(searchText) {
+            $('#employeeTable tbody tr').each(function () {
+                var employeeName = $(this).find('td:first-child').text().toLowerCase();
+
+                if (employeeName.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+
+    // Xử lý sự kiện xóa cán bộ
+    document.addEventListener("DOMContentLoaded", function () {
+        var deleteButtons = document.querySelectorAll(".delete-btn");
         deleteButtons.forEach(function (button) {
             button.addEventListener("click", function () {
-                // Lấy hàng (tr) chứa nút "Xóa"
                 var row = this.closest("tr");
-
-                // Hiển thị cảnh báo xác nhận trước khi xóa
                 if (confirm("Bạn có chắc chắn muốn xóa thông tin cán bộ này không?")) {
-                    // Xóa hàng (tr) khỏi bảng
                     row.remove();
                 }
             });
         });
     });
-
 </script>

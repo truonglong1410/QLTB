@@ -122,10 +122,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DangKySuDungThietBiController.cs" />
     <Compile Include="Controllers\DanhSachCanBoController.cs" />
-    <Compile Include="Controllers\DanhSachPhongBanController.cs" />
     <Compile Include="Controllers\DanhSachThietBiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SuaChuaController.cs" />
+    <Compile Include="Controllers\SuaThongTinCanBoController.cs" />
     <Compile Include="Controllers\ThemCBController.cs" />
     <Compile Include="Controllers\ThemThietBiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,12 +186,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ThemCB\ThemCB.cshtml" />
-    <Content Include="Views\DanhSachPhongBan\DSPhongBan.cshtml" />
     <Content Include="Views\ThemThietBi\ThemTB.cshtml" />
     <Content Include="Views\DanhSachThietBi\DSThietBi.cshtml" />
     <Content Include="Views\SuaChua\SuaChua.cshtml" />
     <Content Include="Views\DangKySuDungThietBi\DKSDThietBi.cshtml" />
     <Content Include="Views\DanhSachCanBo\DSCanBo.cshtml" />
+    <Content Include="Views\SuaThongTinCanBo\SuaTTCanBo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

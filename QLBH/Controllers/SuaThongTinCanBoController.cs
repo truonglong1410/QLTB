@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace QLBH.Controllers
 {
-    public class DanhSachPhongBanController : Controller
+    public class SuaThongTinCanBoController : Controller
     {
-        // GET: DanhSachPhongBan
-        public ActionResult DSPhongBan()
+        // GET: SuaThongTinCanBo
+        public ActionResult SuaTTCanBo()
         {
             return View();
         }
