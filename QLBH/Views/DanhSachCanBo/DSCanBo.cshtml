@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "DSCanBo";
+}
+
+<div class="content-wrapper">
+    <div class="container mt-5 wrapper mb-5">
+        <!-- Chú ý -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h2>Danh sách cán bộ</h2>
+                <div class="form-check-inline mb-3">
+                    <div class="form-group mr-3">
+                        <label for="filterDepartment">Lọc theo phòng ban:</label>
+                        <select class="form-control" id="filterDepartment">
+                            <option value="">Tất cả</option>
+                            <option value="Tổng hợp">Tổng hợp</option>
+                            <option value="Kế toán">Kế toán</option>
+                            <option value="Nhân sự">Nhân sự</option>
+                            <option value="Kỹ thuật">Kỹ thuật</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterGender">Lọc theo giới tính:</label>
+                        <select class="form-control" id="filterGender">
+                            <option value="">Tất cả</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table id="employeeTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Phòng ban</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
+                        <tr data-department="Tổng hợp" data-gender="Nam">
+                            <td>Nguyễn Văn A</td>
+                            <td>Nam</td>
+                            <td>nguyenvana_01@gmail.com</td>
+                            <td>0123456789</td>
+                            <td>Tổng hợp</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+                        <tr data-department="Kế toán" data-gender="Nữ">
+                            <td>Trần Thị B</td>
+                            <td>Nữ</td>
+                            <td>tranthib_02@gmail.com</td>
+                            <td>0987654321</td>
+                            <td>Kế toán</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+                        <tr data-department="Nhân sự" data-gender="Nam">
+                            <td>Phạm Văn C</td>
+                            <td>Nam</td>
+                            <td>phamvanc_03@gmail.com</td>
+                            <td>0365987412</td>
+                            <td>Nhân sự</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+                        <tr data-department="Kỹ thuật" data-gender="Nữ">
+                            <td>Nguyễn Thị D</td>
+                            <td>Nữ</td>
+                            <td>nguyenthid_04@gmail.com</td>
+                            <td>0123456789</td>
+                            <td>Kỹ thuật</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+
+                        <tr data-department="Tổng hợp" data-gender="Nam">
+                            <td>Trần Văn E</td>
+                            <td>Nam</td>
+                            <td>tranve_05@gmail.com</td>
+                            <td>0987654321</td>
+                            <td>Tổng hợp</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+
+                        <tr data-department="Nhân sự" data-gender="Nữ">
+                            <td>Lê Thị F</td>
+                            <td>Nữ</td>
+                            <td>lethif_06@gmail.com</td>
+                            <td>0365987412</td>
+                            <td>Nhân sự</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+
+                        <tr data-department="Kế toán" data-gender="Nam">
+                            <td>Phạm Văn G</td>
+                            <td>Nam</td>
+                            <td>phamvang_07@gmail.com</td>
+                            <td>0123456789</td>
+                            <td>Kế toán</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+
+                        <tr data-department="Tổng hợp" data-gender="Nữ">
+                            <td>Hoàng Thị H</td>
+                            <td>Nữ</td>
+                            <td>hoangthih_08@gmail.com</td>
+                            <td>0987654321</td>
+                            <td>Tổng hợp</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+                        <tr data-department="Kỹ thuật" data-gender="Nam">
+                            <td>Trần Văn I</td>
+                            <td>Nam</td>
+                            <td>tranvi_09@gmail.com</td>
+                            <td>0365987412</td>
+                            <td>Kỹ thuật</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+
+                        <tr data-department="Kế toán" data-gender="Nữ">
+                            <td>Nguyễn Thị K</td>
+                            <td>Nữ</td>
+                            <td>nguyenthik_10@gmail.com</td>
+                            <td>0123456789</td>
+                            <td>Kế toán</td>
+                            <td><a href="edit.php">Sửa</a></td>
+                            <td><button class="delete-btn">Xóa</button></td>
+                        </tr>
+
+                        <!-- Thêm các hàng dữ liệu khác tương tự -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Script để lọc danh sách cán bộ -->
+<script>
+    $(document).ready(function () {
+        // Bắt sự kiện thay đổi trong dropdown lọc phòng ban
+        $('#filterDepartment').change(function () {
+            var selectedDepartment = $(this).val(); // Lấy giá trị đã chọn
+            filterEmployees(selectedDepartment, $('#filterGender').val()); // Gọi hàm lọc
+        });
+
+        // Bắt sự kiện thay đổi trong dropdown lọc giới tính
+        $('#filterGender').change(function () {
+            var selectedGender = $(this).val(); // Lấy giá trị đã chọn
+            filterEmployees($('#filterDepartment').val(), selectedGender); // Gọi hàm lọc
+        });
+
+        // Hàm để lọc và hiển thị các cán bộ dựa trên phòng ban và giới tính
+        function filterEmployees(department, gender) {
+            $('#employeeTable tbody tr').each(function () {
+                var rowDepartment = $(this).data('department');
+                var rowGender = $(this).data('gender');
+
+                // Kiểm tra nếu phòng ban hoặc giới tính khớp với lựa chọn hoặc là "Tất cả" thì hiển thị, ngược lại ẩn đi
+                if ((department === '' || rowDepartment === department) && (gender === '' || rowGender === gender)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy tất cả các nút "Xóa"
+        var deleteButtons = document.querySelectorAll(".delete-btn");
+
+        // Duyệt qua từng nút và thêm sự kiện click
+        deleteButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                // Lấy hàng (tr) chứa nút "Xóa"
+                var row = this.closest("tr");
+
+                // Hiển thị cảnh báo xác nhận trước khi xóa
+                if (confirm("Bạn có chắc chắn muốn xóa thông tin cán bộ này không?")) {
+                    // Xóa hàng (tr) khỏi bảng
+                    row.remove();
+                }
+            });
+        });
+    });
+
+</script>
