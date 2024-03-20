@@ -48,14 +48,14 @@
     <div class="container mt-5 wrapper mb-5">
         <div class="row mt-4 justify-content-center align-items-center">
             <div class="col-md-4">
-                <form>
+                <form id="productForm">
                     <div class="form-group">
                         <label for="deviceType">Loại thiết bị:</label>
                         <select class="form-control" id="deviceType">
-                            <option value="chair">Bàn ghế</option>
-                            <option value="screen">Màn hình</option>
-                            <option value="laptop">Laptop</option>
-                            <option value="airConditional">Máy điều hòa</option>
+                            <option value="Bàn ghế">Bàn ghế</option>
+                            <option value="Màn Hình">Màn hình</option>
+                            <option value="Máy tính">Máy tính</option>
+                            <option value="Máy điều hòa">Máy điều hòa</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -74,33 +74,111 @@
                         <label for="warrantyPeriod">Thời gian bảo hành:</label>
                         <div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" name="warrantyPeriod" id="6m" value="6m" class="form-check-input" checked>
-                                <label for="6m" class="form-check-label">6 Tháng</label>
+                                <input type="radio" name="warrantyPeriod" id="6m" value="6 tháng" class="form-check-input" checked>
+                                <label for="6m" class="form-check-label mr-2">6 Tháng</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" name="warrantyPeriod" id="12m" value="12m" class="form-check-input">
+                                <input type="radio" name="warrantyPeriod" id="12m" value="12 tháng" class="form-check-input">
                                 <label for="12m" class="form-check-label">12 Tháng</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" name="warrantyPeriod" id="24m" value="24m" class="form-check-input">
+                                <input type="radio" name="warrantyPeriod" id="24m" value="24 tháng" class="form-check-input">
                                 <label for="24m" class="form-check-label">24 Tháng</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" name="warrantyPeriod" id="36m" value="36m" class="form-check-input">
+                                <input type="radio" name="warrantyPeriod" id="36m" value="36 tháng" class="form-check-input">
                                 <label for="36m" class="form-check-label">36 Tháng</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="warrantyPeriod" id="expired" value="Hết bảo hành" class="form-check-input">
+                                <label for="expired" class="form-check-label">Hết bảo hành</label>
                             </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Thêm</button>
                 </form>
             </div>
-        </div>
+        </div>  
+        <table class="table mt-4 table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Loại thiết bị</th>
+                    <th scope="col">Tên thiết bị</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Ngày tiếp nhận</th>
+                    <th scope="col">Thời gian bảo hành</th>
+                </tr>
+            </thead>
+            <tbody id="productList">
+                <!-- Dữ liệu sản phẩm sẽ được thêm vào đây -->           
+            </tbody>
+        </table>
     </div>
 </div>
+
+
+
+<script>
+    // Danh sách sản phẩm
+    var productList = [];
+
+    // Thêm sản phẩm vào danh sách
+    document.getElementById('productForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var deviceName = document.getElementById('deviceName').value;
+        var deviceType = document.getElementById('deviceType').value;
+        var quantity = document.getElementById('quantity').value;
+        var dayReception = document.getElementById('dayReception').value;
+        var warrantyPeriod = document.querySelector('input[name="warrantyPeriod"]:checked').value;
+
+        var product = {
+            deviceName: deviceName,
+            deviceType: deviceType,
+            quantity: quantity,
+            dayReception: dayReception,
+            warrantyPeriod: warrantyPeriod
+        };
+
+        productList.push(product);
+
+        renderProductList();
+        resetForm();
+    });
+
+    // Hiển thị danh sách sản phẩm
+    function renderProductList() {
+        var tableBody = document.getElementById('productList');
+        tableBody.innerHTML = '';
+
+        productList.forEach(function (product) {
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${product.deviceName}</td>
+                <td>${product.deviceType}</td>
+                <td>${product.quantity}</td>
+                <td>${product.dayReception}</td>
+                <td>${product.warrantyPeriod}</td>
+            `;
+            tableBody.appendChild(newRow);
+        });
+    }
+
+    // Đặt lại form nhập liệu
+    function resetForm() {
+        document.getElementById('deviceName').value = '';
+        document.getElementById('deviceType').value = 'all';
+        document.getElementById('quantity').value = '';
+        document.getElementById('dayReception').value = '';
+        document.getElementById('6m').checked = true;
+    }
+
+    
+</script>
+
 <!-- /.content-wrapper -->
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-

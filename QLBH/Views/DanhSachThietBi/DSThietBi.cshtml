@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "DSThietBi";
 }
 
@@ -21,7 +20,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Danh sách  thiết bị</h1>
+                    <h1 class="m-0">Danh sách thiết bị</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -33,38 +32,148 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Bàn ghế: Bàn Gaming GT Series Z003 | Chữ Z, chân đen
-                        <span class="badge rounded-pill">số lượng:6</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Laptop: Dell XPS 15
-                        <span class="badge rounded-pill">số lượng:6</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Máy điều hòa: LG DUALCOOL™Inverter 1 chiều 9.000 BTU (1HP)|V10APFP
-                        <span class="badge rounded-pill">số lượng:2</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Màn hình: ASUS TUF GAMING VG27AQ3A
-                        <span class="badge rounded-pill">số lượng:1</span>
-                    </li>
-                </ul>
+    <div class="container mt-5 wrapper mb-5">
+        <!-- Chú ý -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="form-check-inline mb-3">
+                    <div class="form-group mr-4">
+                        <label for="filterDeviceType">Lọc theo loại thiết bị:</label>
+                        <select class="form-control" id="filterDeviceType">
+                            <option value="all">Tất cả</option>
+                            <option value="Bàn ghế">Bàn ghế</option>
+                            <option value="Màn hình">Màn hình</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Máy điều hòa">Máy điều hòa</option>
+                        </select>
+                    </div>
+                    <div class="form-group mr-4">
+                        <label for="warrantyFilter">Lọc theo bảo hành:</label>
+                        <select class="form-control" id="warrantyFilter">
+                            <option value="all">Tất cả</option>
+                            <option value="inWarranty">Còn bảo hành</option>
+                            <option value="outOfWarranty">Hết bảo hành</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="searchName">Tìm kiếm theo tên sản phẩm:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchName" placeholder="Nhập tên...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <a class="btn bg-primary" href="@Url.Action("ThemTB","ThemThietBi")">Thêm thiết bị</a>
+                </div>
+                <table id="productList" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Loại thiết bị</th>
+                            <th>Tên thiết bị</th>
+                            <th>Số lượng</th>
+                            <th>Ngày tiếp nhận</th>
+                            <th>Bảo hành</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu thiết bị sẽ được hiển thị ở đây -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Danh sách sản phẩm
+    var productList = [
+        { deviceType: "Màn hình", deviceName: "Màn hình LG 13\"", quantity: 1, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" },
+        { deviceType: "Máy điều hòa", deviceName: "Máy điều hòa Daikin 2HP", quantity: 1, dayReception: "5/3/2024", warrantyPeriod: "Còn bảo hành" },
+        { deviceType: "Laptop", deviceName: "Laptop gaming asus tuf 11400H", quantity: 2, dayReception: "15/3/2022", warrantyPeriod: "Hết bảo hành" },
+        { deviceType: "Màn hình", deviceName: "Màn hình LG 42\"", quantity: 1, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" },
+        { deviceType: "Máy điều hòa", deviceName: "Máy điều hòa Panasonic", quantity: 3, dayReception: "25/2/2021", warrantyPeriod: "Hết bảo hành" },
+        { deviceType: "Laptop", deviceName: "Laptop dell vostro", quantity: 4, dayReception: "15/3/2023", warrantyPeriod: "Còn bảo hành" },
+        { deviceType: "Màn hình", deviceName: "Màn hình TCL 50\"", quantity: 1, dayReception: "15/3/2021", warrantyPeriod: "Hết bảo hành" },
+        { deviceType: "Màn hình", deviceName: "Màn hình ASUS", quantity: 12, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" }
+    ];
+
+    // Hiển thị danh sách sản phẩm ban đầu
+    renderProductList(productList);
+
+    // Lọc sản phẩm theo loại thiết bị
+    document.getElementById('filterDeviceType').addEventListener('change', function () {
+        var selectedType = this.value;
+        var filteredList = productList.filter(function (product) {
+            return selectedType === 'all' || product.deviceType === selectedType;
+        });
+        renderFilteredProductList(filteredList);
+    });
+
+    // Lọc sản phẩm theo trạng thái bảo hành
+    document.getElementById('warrantyFilter').addEventListener('change', function () {
+        var selectedStatus = this.value;
+        var filteredList = productList.filter(function (product) {
+            if (selectedStatus === 'inWarranty') {
+                return product.warrantyPeriod === 'Còn bảo hành';
+            } else if (selectedStatus === 'outOfWarranty') {
+                return product.warrantyPeriod === 'Hết bảo hành';
+            } else {
+                return true; // Hiển thị tất cả sản phẩm nếu lựa chọn là "Tất cả"
+            }
+        });
+        renderFilteredProductList(filteredList);
+    });
+
+    // Tìm kiếm sản phẩm theo tên
+    document.getElementById('searchButton').addEventListener('click', function () {
+        var keyword = document.getElementById('searchName').value.trim().toLowerCase();
+        var filteredList = productList.filter(function (product) {
+            return product.deviceName.toLowerCase().includes(keyword);
+        });
+        renderFilteredProductList(filteredList);
+    });
+
+    // Hàm hiển thị danh sách sản phẩm đã lọc
+    function renderFilteredProductList(filteredList) {
+        var tableBody = document.getElementById('productList').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = '';
+
+        filteredList.forEach(function (product) {
+            var newRow = tableBody.insertRow();
+            newRow.innerHTML = `
+                <td>${product.deviceType}</td>
+                <td>${product.deviceName}</td>
+                <td>${product.quantity}</td>
+                <td>${product.dayReception}</td>
+                <td>${product.warrantyPeriod}</td>
+            `;
+        });
+    }
+
+    // Hàm hiển thị danh sách sản phẩm ban đầu
+    function renderProductList(productList) {
+        var tableBody = document.getElementById('productList').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = '';
+
+        productList.forEach(function (product) {
+            var newRow = tableBody.insertRow();
+            newRow.innerHTML = `
+                <td>${product.deviceType}</td>
+                <td>${product.deviceName}</td>
+                <td>${product.quantity}</td>
+                <td>${product.dayReception}</td>
+                <td>${product.warrantyPeriod}</td>
+            `;
+        });
+    }
+</script>
+
 <!-- /.content-wrapper -->
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-
-

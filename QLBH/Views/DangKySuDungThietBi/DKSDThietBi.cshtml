@@ -48,66 +48,215 @@
     <div class="container mt-5 wrapper mb-5">
         <!--chú ý-->
         <div class="row mt-4">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-9 offset-md-1">
                 <form>
-                    <div class="form-group">
-                        <label for="fullName">Họ và tên: </label>
-                        <input type="text" class="form-control" id="fullName" required>
+                    <div class="form-check-inline form-group">
+                        <div class="form-group col-md-6">
+                            <label for="fullName">Họ và tên: </label>
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="chucVu">Chức vụ:</label>
+                            <select class="form-control" id="chucVu" required>
+                                <option value="">Chọn chức vụ</option>
+                                <option value="Giám đốc">Giám Đốc</option>
+                                <option value="Phó giám đốc">Phó Giám Đốc</option>
+                                <option value="Trưởng phòng">Trưởng Phòng</option>
+                                <option value="Phó phòng">Phó Phòng</option>
+                                <option value="Nhân viên">Nhân Viên</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="department">Phòng ban:</label>
+                            <select class="form-control" id="department" required>
+                                <option value="">Chọn phòng ban</option>
+                                <option value="Tổng hợp">Tổng hợp</option>
+                                <option value="Kế toán">Kế toán</option>
+                                <option value="Nhân sự">Nhân sự</option>
+                                <option value="Kỹ thuật">Kỹ thuật</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="chucVu">Chức vụ:</label>
-                        <select class="form-control" id="chucVu" required>
-                            <option value="">Chọn chức vụ</option>
-                            <option value="Giám đốc">Giám Đốc</option>
-                            <option value="Phó giám đốc">Phó Giám Đốc</option>
-                            <option value="Trưởng phòng">Trưởng Phòng</option>
-                            <option value="Phó phòng">Phó Phòng</option>
-                            <option value="Nhân viên">Nhân Viên</option>
-                        </select>
+                    <div class="form-check-inline form-group">
+                        <div class="form-group col-md-5">
+                            <label for="deviceName">Tên thiết bị:</label>
+                            <input type="text" class="form-control" id="deviceName">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="deviceType">Loại thiết bị:</label>
+                            <select class="form-control" id="deviceType">
+                                <option value="">Chọn loại thiết bị</option>
+                                <option value="chair">Bàn ghế</option>
+                                <option value="screen">Màn hình</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="airConditional">Máy điều hòa</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="status">Tình trạng:</label>
+                            <select class="form-control" id="status" required>
+                                <option value="">Chọn tình trạng</option>
+                                <option value="Sản phẩm mới">Sản phẩm mới</option>
+                                <option value="Đã qua sử dụng còn bảo hành">Đã qua sử dụng còn bảo hành</option>
+                                <option value="Đã qua sử dụng hết bảo hành">Đã qua sử dụng hết bảo hành</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="department">Phòng ban:</label>
-                        <select class="form-control" id="department" required>
-                            <option value="">Chọn phòng ban</option>
-                            <option value="Tổng hợp">Tổng hợp</option>
-                            <option value="Kế toán">Kế toán</option>
-                            <option value="Nhân sự">Nhân sự</option>
-                            <option value="Kỹ thuật">Kỹ thuật</option>
-                        </select>
-                    </div>
-                    <div class="my-3">
+                    <div class="my-1 col-md-3">
                         <label for="ngayBanGiao">Ngày bàn giao:</label><br>
                         <input type="date" id="ngayBanGiao">
                     </div>
-                    <div class="form-group">
-                        <label for="deviceName">Tên thiết bị:</label>
-                        <input type="text" class="form-control" id="deviceName">
-                    </div>
-                    <div class="form-group">
-                        <label for="deviceType">Loại thiết bị:</label>
-                        <select class="form-control" id="deviceType">
-                            <option value="">Chọn loại thiết bị</option>
-                            <option value="chair">Bàn ghế</option>
-                            <option value="screen">Màn hình</option>
-                            <option value="laptop">Laptop</option>
-                            <option value="airConditional">Máy điều hòa</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Tình trạng:</label>
-                        <select class="form-control" id="status" required>
-                            <option value="">Chọn tình trạng</option>
-                            <option value="Sản phẩm mới">Sản phẩm mới</option>
-                            <option value="Đã qua sử dụng còn bảo hành">Đã qua sử dụng còn bảo hành</option>
-                            <option value="Đã qua sử dụng hết bảo hành">Đã qua sử dụng hết bảo hành</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Thêm thông tin</button>
+                    <button type="submit" class="btn btn-primary mt-1 mx-3">Thêm thông tin</button>
                 </form>
             </div>
         </div>
+        <table class="table table-bordered mt-2">
+            <thead>
+                <tr>
+                    <th>Họ và tên</th>
+                    <th>Chức vụ</th>
+                    <th>Phòng ban</th>
+                    <th>Tên thiết bị</th>
+                    <th>Loại thiết bị</th>
+                    <th>Tình trạng</th>
+                    <th>Ngày bàn giao</th>
+                </tr>
+            </thead>
+            <tbody id="employeeDeviceList">
+                <!-- Dữ liệu nhân viên và thiết bị sẽ được thêm vào đây -->
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>Trưởng Phòng</td>
+                    <td>Kỹ thuật</td>
+                    <td>Laptop Dell</td>
+                    <td>Laptop</td>
+                    <td>Sản phẩm mới</td>
+                    <td>2024-03-20</td>
+                </tr>
+                <tr>
+                    <td>Trần Thị B</td>
+                    <td>Nhân Viên</td>
+                    <td>Kế toán</td>
+                    <td>Màn hình Samsung</td>
+                    <td>Màn hình</td>
+                    <td>Đã qua sử dụng còn bảo hành</td>
+                    <td>2024-03-18</td>
+                </tr>
+                <tr>
+                    <td>Phạm Văn C</td>
+                    <td>Phó Giám Đốc</td>
+                    <td>Tổng hợp</td>
+                    <td>Bàn làm việc</td>
+                    <td>Bàn ghế</td>
+                    <td>Đã qua sử dụng hết bảo hành</td>
+                    <td>2024-03-19</td>
+                </tr>
+                <tr>
+                    <td>Lê Thị D</td>
+                    <td>Giám Đốc</td>
+                    <td>Tổng hợp</td>
+                    <td>Máy điều hòa Panasonic</td>
+                    <td>Máy điều hòa</td>
+                    <td>Đã qua sử dụng còn bảo hành</td>
+                    <td>2024-03-17</td>
+                </tr>
+                <tr>
+                    <td>Hoàng Văn E</td>
+                    <td>Nhân Viên</td>
+                    <td>Nhân sự</td>
+                    <td>Bàn ghế xoay</td>
+                    <td>Bàn ghế</td>
+                    <td>Đã qua sử dụng còn bảo hành</td>
+                    <td>2024-03-16</td>
+                </tr>
+                <tr>
+                    <td>Đỗ Thị F</td>
+                    <td>Trưởng Phòng</td>
+                    <td>Kỹ thuật</td>
+                    <td>Laptop HP</td>
+                    <td>Laptop</td>
+                    <td>Đã qua sử dụng hết bảo hành</td>
+                    <td>2024-03-15</td>
+                </tr>
+                <tr>
+                    <td>Trần Văn G</td>
+                    <td>Phó Phòng</td>
+                    <td>Kỹ thuật</td>
+                    <td>Màn hình Dell</td>
+                    <td>Màn hình</td>
+                    <td>Đã qua sử dụng còn bảo hành</td>
+                    <td>2024-03-14</td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Thị H</td>
+                    <td>Nhân Viên</td>
+                    <td>Kế toán</td>
+                    <td>Bàn làm việc</td>
+                    <td>Bàn ghế</td>
+                    <td>Đã qua sử dụng hết bảo hành</td>
+                    <td>2024-03-13</td>
+                </tr>
+                <tr>
+                    <td>Lê Văn I</td>
+                    <td>Trưởng Phòng</td>
+                    <td>Nhân sự</td>
+                    <td>Màn hình ASUS</td>
+                    <td>Màn hình</td>
+                    <td>Sản phẩm mới</td>
+                    <td>2024-03-12</td>
+                </tr>
+                <tr>
+                    <td>Phan Thị K</td>
+                    <td>Phó Phòng</td>
+                    <td>Kỹ thuật</td>
+                    <td>Màn hình Samsung</td>
+                    <td>Màn hình</td>
+                    <td>Đã qua sử dụng hết bảo hành</td>
+                    <td>2024-03-11</td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const tableBody = document.getElementById("employeeDeviceList");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Lấy dữ liệu từ form
+            const fullName = document.getElementById("fullName").value;
+            const chucVu = document.getElementById("chucVu").value;
+            const department = document.getElementById("department").value;
+            const deviceName = document.getElementById("deviceName").value;
+            const deviceType = document.getElementById("deviceType").value;
+            const status = document.getElementById("status").value;
+            const ngayBanGiao = document.getElementById("ngayBanGiao").value;
+
+            // Tạo một hàng mới trong bảng
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+            <td>${fullName}</td>
+            <td>${chucVu}</td>
+            <td>${department}</td>
+            <td>${deviceName}</td>
+            <td>${deviceType}</td>
+            <td>${status}</td>
+            <td>${ngayBanGiao}</td>
+        `;
+
+            // Thêm hàng mới vào bảng
+            tableBody.appendChild(newRow);
+
+            // Xóa dữ liệu trong form sau khi thêm thành công
+            form.reset();
+        });
+    });
+
+</script>
 <!-- /.content-wrapper -->
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">

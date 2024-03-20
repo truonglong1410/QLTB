@@ -128,6 +128,7 @@
     <Compile Include="Controllers\SuaThongTinCanBoController.cs" />
     <Compile Include="Controllers\ThemCBController.cs" />
     <Compile Include="Controllers\ThemThietBiController.cs" />
+    <Compile Include="Controllers\ThongKeThietBiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,6 +193,7 @@
     <Content Include="Views\DangKySuDungThietBi\DKSDThietBi.cshtml" />
     <Content Include="Views\DanhSachCanBo\DSCanBo.cshtml" />
     <Content Include="Views\SuaThongTinCanBo\SuaTTCanBo.cshtml" />
+    <Content Include="Views\ThongKeThietBi\ThongKeTB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

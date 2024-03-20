@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "ThongKeTB";
+}
+
+<div class="form-group content-wrapper mb-5">
+    <div class="btn-group mt-3 mb-2 mx-3" role="group" aria-label="Select Chart">
+        <button type="button" class="btn btn-primary" onclick="showProductChart()">Sản phẩm</button>
+        <button type="button" class="btn btn-primary" onclick="showWarrantyChart()">Bảo hành</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="productChart" width="400" height="200"></canvas>
+    <canvas id="warrantyChart" width="400" height="200" style="display: none;"></canvas> <!-- Ẩn đồ thị bảo hành ban đầu -->
+
+
+    <script>
+        var ctx1 = document.getElementById('productChart').getContext('2d');
+        var data1 = {
+            labels: ['Bàn ghế', 'Màn hình', 'Laptop', 'Máy điều hòa'],
+            datasets: [{
+                label: 'Số lượng sản phẩm',
+                data: [40, 25, 42, 8],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(64,155,40,0.2)'
+
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(64,155,40,1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+
+        var productChart = new Chart(ctx1, {
+            type: 'bar',
+            data: data1,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        var ctx2 = document.getElementById('warrantyChart').getContext('2d');
+        var data2 = {
+            labels: ['Hết bảo hành', 'Dưới 6 tháng', 'Từ 6 đến 12 tháng', 'Trên 12 tháng'],
+            datasets: [{
+                label: 'Thời hạn bảo hành còn lại',
+                data: [35, 25, 33, 22],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(64,155,40,0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(64,155,40,1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Tạo và cấu hình đồ thị bảo hành
+        var warrantyChart = new Chart(ctx2, {
+            type: 'bar',
+            data: data2,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // hiển thị sản phẩm ẩn bảo hành
+        function showProductChart() {
+            document.getElementById('productChart').style.display = 'block';
+            document.getElementById('warrantyChart').style.display = 'none';
+        }
+
+        // hiển thị bảo hành ẩn sản phẩm
+        function showWarrantyChart() {
+            document.getElementById('productChart').style.display = 'none';
+            document.getElementById('warrantyChart').style.display = 'block';
+        }
+
+    </script>
+
+</div>
+
+
