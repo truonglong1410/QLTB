@@ -45,7 +45,7 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
-    <div class="container mt-5 wrapper mb-5">
+    <div class="container wrapper mb-5">
         <!--chú ý-->
         <div class="row mt-4">
             <div class="col-md-9 offset-md-1">
@@ -56,17 +56,6 @@
                             <input type="text" class="form-control" id="fullName" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="chucVu">Chức vụ:</label>
-                            <select class="form-control" id="chucVu" required>
-                                <option value="">Chọn chức vụ</option>
-                                <option value="Giám đốc">Giám Đốc</option>
-                                <option value="Phó giám đốc">Phó Giám Đốc</option>
-                                <option value="Trưởng phòng">Trưởng Phòng</option>
-                                <option value="Phó phòng">Phó Phòng</option>
-                                <option value="Nhân viên">Nhân Viên</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
                             <label for="department">Phòng ban:</label>
                             <select class="form-control" id="department" required>
                                 <option value="">Chọn phòng ban</option>
@@ -75,6 +64,10 @@
                                 <option value="Nhân sự">Nhân sự</option>
                                 <option value="Kỹ thuật">Kỹ thuật</option>
                             </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="ngayBanGiao">Ngày bàn giao:</label><br>
+                            <input type="date" class="form-control" id="ngayBanGiao">
                         </div>
                     </div>
                     <div class="form-check-inline form-group">
@@ -102,10 +95,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="my-1 col-md-3">
-                        <label for="ngayBanGiao">Ngày bàn giao:</label><br>
-                        <input type="date" id="ngayBanGiao">
-                    </div>
                     <button type="submit" class="btn btn-primary mt-1 mx-3">Thêm thông tin</button>
                 </form>
             </div>
@@ -114,7 +103,6 @@
             <thead>
                 <tr>
                     <th>Họ và tên</th>
-                    <th>Chức vụ</th>
                     <th>Phòng ban</th>
                     <th>Tên thiết bị</th>
                     <th>Loại thiết bị</th>
@@ -126,7 +114,6 @@
                 <!-- Dữ liệu nhân viên và thiết bị sẽ được thêm vào đây -->
                 <tr>
                     <td>Nguyễn Văn A</td>
-                    <td>Trưởng Phòng</td>
                     <td>Kỹ thuật</td>
                     <td>Laptop Dell</td>
                     <td>Laptop</td>
@@ -135,7 +122,6 @@
                 </tr>
                 <tr>
                     <td>Trần Thị B</td>
-                    <td>Nhân Viên</td>
                     <td>Kế toán</td>
                     <td>Màn hình Samsung</td>
                     <td>Màn hình</td>
@@ -144,7 +130,6 @@
                 </tr>
                 <tr>
                     <td>Phạm Văn C</td>
-                    <td>Phó Giám Đốc</td>
                     <td>Tổng hợp</td>
                     <td>Bàn làm việc</td>
                     <td>Bàn ghế</td>
@@ -153,7 +138,6 @@
                 </tr>
                 <tr>
                     <td>Lê Thị D</td>
-                    <td>Giám Đốc</td>
                     <td>Tổng hợp</td>
                     <td>Máy điều hòa Panasonic</td>
                     <td>Máy điều hòa</td>
@@ -162,7 +146,6 @@
                 </tr>
                 <tr>
                     <td>Hoàng Văn E</td>
-                    <td>Nhân Viên</td>
                     <td>Nhân sự</td>
                     <td>Bàn ghế xoay</td>
                     <td>Bàn ghế</td>
@@ -171,7 +154,6 @@
                 </tr>
                 <tr>
                     <td>Đỗ Thị F</td>
-                    <td>Trưởng Phòng</td>
                     <td>Kỹ thuật</td>
                     <td>Laptop HP</td>
                     <td>Laptop</td>
@@ -180,7 +162,6 @@
                 </tr>
                 <tr>
                     <td>Trần Văn G</td>
-                    <td>Phó Phòng</td>
                     <td>Kỹ thuật</td>
                     <td>Màn hình Dell</td>
                     <td>Màn hình</td>
@@ -189,7 +170,6 @@
                 </tr>
                 <tr>
                     <td>Nguyễn Thị H</td>
-                    <td>Nhân Viên</td>
                     <td>Kế toán</td>
                     <td>Bàn làm việc</td>
                     <td>Bàn ghế</td>
@@ -198,7 +178,6 @@
                 </tr>
                 <tr>
                     <td>Lê Văn I</td>
-                    <td>Trưởng Phòng</td>
                     <td>Nhân sự</td>
                     <td>Màn hình ASUS</td>
                     <td>Màn hình</td>
@@ -207,7 +186,6 @@
                 </tr>
                 <tr>
                     <td>Phan Thị K</td>
-                    <td>Phó Phòng</td>
                     <td>Kỹ thuật</td>
                     <td>Màn hình Samsung</td>
                     <td>Màn hình</td>
@@ -229,7 +207,6 @@
 
             // Lấy dữ liệu từ form
             const fullName = document.getElementById("fullName").value;
-            const chucVu = document.getElementById("chucVu").value;
             const department = document.getElementById("department").value;
             const deviceName = document.getElementById("deviceName").value;
             const deviceType = document.getElementById("deviceType").value;
@@ -240,7 +217,6 @@
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
             <td>${fullName}</td>
-            <td>${chucVu}</td>
             <td>${department}</td>
             <td>${deviceName}</td>
             <td>${deviceType}</td>

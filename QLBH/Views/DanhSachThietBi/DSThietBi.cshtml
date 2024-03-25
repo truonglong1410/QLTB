@@ -79,7 +79,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Dữ liệu thiết bị sẽ được hiển thị ở đây -->
                     </tbody>
                 </table>
             </div>
@@ -90,14 +89,14 @@
 <script>
     // Danh sách sản phẩm
     var productList = [
-        { deviceType: "Màn hình", deviceName: "Màn hình LG 13\"", quantity: 1, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" },
+        { deviceType: "Màn hình", deviceName: "Màn hình LG 13\"", quantity: 1, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành", },
         { deviceType: "Máy điều hòa", deviceName: "Máy điều hòa Daikin 2HP", quantity: 1, dayReception: "5/3/2024", warrantyPeriod: "Còn bảo hành" },
-        { deviceType: "Laptop", deviceName: "Laptop gaming asus tuf 11400H", quantity: 2, dayReception: "15/3/2022", warrantyPeriod: "Hết bảo hành" },
+        { deviceType: "Laptop", deviceName: "Laptop gaming asus tuf 11400H", quantity: 1, dayReception: "15/3/2022", warrantyPeriod: "Hết bảo hành" },
         { deviceType: "Màn hình", deviceName: "Màn hình LG 42\"", quantity: 1, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" },
-        { deviceType: "Máy điều hòa", deviceName: "Máy điều hòa Panasonic", quantity: 3, dayReception: "25/2/2021", warrantyPeriod: "Hết bảo hành" },
-        { deviceType: "Laptop", deviceName: "Laptop dell vostro", quantity: 4, dayReception: "15/3/2023", warrantyPeriod: "Còn bảo hành" },
+        { deviceType: "Máy điều hòa", deviceName: "Máy điều hòa Panasonic", quantity: 1, dayReception: "25/2/2021", warrantyPeriod: "Hết bảo hành" },
+        { deviceType: "Laptop", deviceName: "Laptop dell vostro", quantity: 1, dayReception: "15/3/2023", warrantyPeriod: "Còn bảo hành" },
         { deviceType: "Màn hình", deviceName: "Màn hình TCL 50\"", quantity: 1, dayReception: "15/3/2021", warrantyPeriod: "Hết bảo hành" },
-        { deviceType: "Màn hình", deviceName: "Màn hình ASUS", quantity: 12, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" }
+        { deviceType: "Màn hình", deviceName: "Màn hình ASUS", quantity: 1, dayReception: "15/3/2024", warrantyPeriod: "Còn bảo hành" }
     ];
 
     // Hiển thị danh sách sản phẩm ban đầu
@@ -169,6 +168,34 @@
             `;
         });
     }
+    // Hàm thêm nút nhân bản phía sau mỗi dòng trong bảng sản phẩm
+        function addDuplicateButton() {
+        var tableRows = document.querySelectorAll('#productList tbody tr');
+        tableRows.forEach(function(row) {
+            var duplicateButtonCell = row.insertCell(-1);
+        var duplicateButton = document.createElement('button');
+        duplicateButton.innerText = 'Nhân bản';
+        duplicateButton.classList.add('btn', 'btn-info');
+        duplicateButton.onclick = function() {
+                var quantity = parseInt(prompt('Nhập số lượng sản phẩm muốn nhân bản:', '1'));
+                if (!isNaN(quantity) && quantity > 0) {
+                    var clonedRow = row.cloneNode(true);
+         // Cập nhật số lượng
+        for (var i = 0; i < quantity; i++) {
+                        var newRow = row.parentNode.insertBefore(clonedRow.cloneNode(true), row.nextSibling);
+                    }
+                } else {
+            alert('Vui lòng nhập số lượng sản phẩm hợp lệ!');
+                }
+            };
+        duplicateButtonCell.appendChild(duplicateButton);
+        });
+    }
+
+        // Gọi hàm thêm nút nhân bản
+        addDuplicateButton();
+
+
 </script>
 
 <!-- /.content-wrapper -->

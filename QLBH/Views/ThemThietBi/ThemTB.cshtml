@@ -45,11 +45,11 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
-    <div class="container mt-5 wrapper mb-5">
+    <div class="container wrapper ">
         <div class="row mt-4 justify-content-center align-items-center">
-            <div class="col-md-4">
-                <form id="productForm">
-                    <div class="form-group">
+            <div class="col-md-7">
+                <form id="productForm">                    
+                    <div class="form-group mr-2 ">
                         <label for="deviceType">Loại thiết bị:</label>
                         <select class="form-control" id="deviceType">
                             <option value="Bàn ghế">Bàn ghế</option>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="deviceName">Tên thiết bị:</label>
                         <input type="text" class="form-control" id="deviceName">
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label for="quantity">Số lượng:</label>
                         <input type="text" class="form-control" id="quantity">
@@ -99,71 +99,12 @@
                 </form>
             </div>
         </div>  
-        <table class="table mt-4 table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Loại thiết bị</th>
-                    <th scope="col">Tên thiết bị</th>
-                    <th scope="col">Số lượng</th>
-                    <th scope="col">Ngày tiếp nhận</th>
-                    <th scope="col">Thời gian bảo hành</th>
-                </tr>
-            </thead>
-            <tbody id="productList">
-                <!-- Dữ liệu sản phẩm sẽ được thêm vào đây -->           
-            </tbody>
-        </table>
     </div>
 </div>
 
 
 
-<script>
-    // Danh sách sản phẩm
-    var productList = [];
-
-    // Thêm sản phẩm vào danh sách
-    document.getElementById('productForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        var deviceName = document.getElementById('deviceName').value;
-        var deviceType = document.getElementById('deviceType').value;
-        var quantity = document.getElementById('quantity').value;
-        var dayReception = document.getElementById('dayReception').value;
-        var warrantyPeriod = document.querySelector('input[name="warrantyPeriod"]:checked').value;
-
-        var product = {
-            deviceName: deviceName,
-            deviceType: deviceType,
-            quantity: quantity,
-            dayReception: dayReception,
-            warrantyPeriod: warrantyPeriod
-        };
-
-        productList.push(product);
-
-        renderProductList();
-        resetForm();
-    });
-
-    // Hiển thị danh sách sản phẩm
-    function renderProductList() {
-        var tableBody = document.getElementById('productList');
-        tableBody.innerHTML = '';
-
-        productList.forEach(function (product) {
-            var newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>${product.deviceName}</td>
-                <td>${product.deviceType}</td>
-                <td>${product.quantity}</td>
-                <td>${product.dayReception}</td>
-                <td>${product.warrantyPeriod}</td>
-            `;
-            tableBody.appendChild(newRow);
-        });
-    }
-
+<script>    
     // Đặt lại form nhập liệu
     function resetForm() {
         document.getElementById('deviceName').value = '';

@@ -77,10 +77,32 @@
                     <input type="date" class="form-control" id="datePicker">
                 </div>
             </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Đăng ký</button>
-        </div>
-    </form>
+            <div class="form-check-inline">
+                <div class="form-group">
+                    <label for="searchDeviceName">Tìm kiếm theo tên thiết bị:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchDeviceName" placeholder="Nhập tên thiết bị">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="searchButton">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ml-5">
+                    <label for="filterDeviceType">Lọc theo loại thiết bị:</label>
+                    <select class="form-control" id="filterDeviceType">
+                        <option value="all">Tất cả</option>
+                        <option value="Bàn ghế">Bàn ghế</option>
+                        <option value="Màn hình">Màn hình</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Máy điều hòa">Máy điều hòa</option>
+                        <!-- Thêm các loại thiết bị khác nếu cần -->
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </div>
+        </form>
 
     <table class="table table-bordered mt-2">
         <thead>
@@ -121,7 +143,7 @@
             </tr>
             <tr>
                 <td>Laptop gaming MSI Katana 15 B13VFK</td>
-                <td>Máy tính</td>
+                <td>Laptop</td>
                 <td>Còn bảo hành</td>
                 <td>2024-03-03</td>
                 <td>2024-04-03</td>
@@ -181,7 +203,7 @@
             </tr>
             <tr>
                 <td>Laptop gaming ASUS TUF Gaming A15</td>
-                <td>Máy tính</td>
+                <td>Laptop</td>
                 <td>Hết bảo hành</td>
                 <td>2024-03-03</td>
                 <td>2024-04-03</td>
@@ -205,7 +227,7 @@
             </tr>
             <tr>
                 <td>Laptop gaming Lenovo LOQ 15IAX9</td>
-                <td>Máy tính</td>
+                <td>Laptop</td>
                 <td>Còn bảo hành</td>
                 <td>2024-03-03</td>
                 <td>2024-04-03</td>
@@ -267,6 +289,39 @@
             });
         });
     }); 
+    document.getElementById('searchButton').addEventListener('click', function () {
+        var keyword = document.getElementById('searchDeviceName').value.trim().toLowerCase();
+        var rows = document.getElementById('userList').getElementsByTagName('tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var deviceName = rows[i].getElementsByTagName('td')[0];
+            if (deviceName) {
+                var textValue = deviceName.textContent || deviceName.innerText;
+                if (textValue.toLowerCase().indexOf(keyword) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    });
+    document.getElementById('filterDeviceType').addEventListener('change', function () {
+        var selectedType = this.value;
+        var rows = document.getElementById('userList').getElementsByTagName('tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var deviceType = rows[i].getElementsByTagName('td')[1]; // Cột thứ hai chứa loại thiết bị
+            if (deviceType) {
+                var textValue = deviceType.textContent || deviceType.innerText;
+                if (selectedType === 'all' || textValue === selectedType) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    });
+    
 
 </script>
 <!-- /.content-wrapper -->

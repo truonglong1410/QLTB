@@ -4,224 +4,224 @@
 }
 
 <div class="content-wrapper">
-    <div class="container mt-5 wrapper mb-5">
+    <div class="container wrapperm mb-5">
         <!-- Chú ý -->
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <h2>Danh sách cán bộ</h2>
-                <div class="form-check-inline mb-3">
-                    <div class="form-group mr-4">
-                        <label for="filterDepartment">Lọc theo phòng ban:</label>
-                        <select class="form-control" id="filterDepartment">
-                            <option value="">Tất cả</option>
-                            <option value="Tổng hợp">Tổng hợp</option>
-                            <option value="Kế toán">Kế toán</option>
-                            <option value="Nhân sự">Nhân sự</option>
-                            <option value="Kỹ thuật">Kỹ thuật</option>
-                        </select>
-                    </div>
-                    <div class="form-group mr-4">
-                        <label for="filterGender">Lọc theo giới tính:</label>
-                        <select class="form-control" id="filterGender">
-                            <option value="">Tất cả</option>
-                            <option value="Nam">Nam</option>
-                            <option value="Nữ">Nữ</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="searchName">Tìm kiếm theo tên:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchName" placeholder="Nhập tên...">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
-                            </div>
+        
+        <div id="DSCB" class="col-md-12">
+            <h2>Danh sách cán bộ</h2>
+            <div class="form-check-inline mb-3">
+                <div class="form-group mr-4">
+                    <label for="filterDepartment">Lọc theo phòng ban:</label>
+                    <select class="form-control" id="filterDepartment">
+                        <option value="">Tất cả</option>
+                        <option value="Tổng hợp">Tổng hợp</option>
+                        <option value="Kế toán">Kế toán</option>
+                        <option value="Nhân sự">Nhân sự</option>
+                        <option value="Kỹ thuật">Kỹ thuật</option>
+                    </select>
+                </div>
+                <div class="form-group mr-4">
+                    <label for="filterGender">Lọc theo giới tính:</label>
+                    <select class="form-control" id="filterGender">
+                        <option value="">Tất cả</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchName">Tìm kiếm theo tên:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchName" placeholder="Nhập tên...">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
                         </div>
                     </div>
                 </div>
-
-                <table id="employeeTable" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Họ và tên</th>
-                            <th>Giới tính</th>
-                            <th>Email</th>
-                            <th>Số điện thoại</th>
-                            <th>Phòng ban</th>
-                            <th>Sửa thông tin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
-                        <tr data-department="Tổng hợp" data-gender="Nam">
-                            <td>Nguyễn Văn A</td>
-                            <td>Nam</td>
-                            <td>nguyenvana_01@gmail.com</td>
-                            <td>0123456789</td>
-                            <td>Tổng hợp</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                        </tr>
-                        <tr data-department="Kế toán" data-gender="Nữ">
-                            <td>Trần Thị B</td>
-                            <td>Nữ</td>
-                            <td>tranthib_02@gmail.com</td>
-                            <td>0987654321</td>
-                            <td>Kế toán</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-                        <tr data-department="Nhân sự" data-gender="Nam">
-                            <td>Phạm Văn C</td>
-                            <td>Nam</td>
-                            <td>phamvanc_03@gmail.com</td>
-                            <td>0365987412</td>
-                            <td>Nhân sự</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-                        <tr data-department="Kỹ thuật" data-gender="Nữ">
-                            <td>Nguyễn Thị D</td>
-                            <td>Nữ</td>
-                            <td>nguyenthid_04@gmail.com</td>
-                            <td>0123456789</td>
-                            <td>Kỹ thuật</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-
-                        <tr data-department="Tổng hợp" data-gender="Nam">
-                            <td>Trần Văn E</td>
-                            <td>Nam</td>
-                            <td>tranve_05@gmail.com</td>
-                            <td>0987654321</td>
-                            <td>Tổng hợp</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-
-                        <tr data-department="Nhân sự" data-gender="Nữ">
-                            <td>Lê Thị F</td>
-                            <td>Nữ</td>
-                            <td>lethif_06@gmail.com</td>
-                            <td>0365987412</td>
-                            <td>Nhân sự</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-
-                        <tr data-department="Kế toán" data-gender="Nam">
-                            <td>Phạm Văn G</td>
-                            <td>Nam</td>
-                            <td>phamvang_07@gmail.com</td>
-                            <td>0123456789</td>
-                            <td>Kế toán</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-
-                        <tr data-department="Tổng hợp" data-gender="Nữ">
-                            <td>Hoàng Thị H</td>
-                            <td>Nữ</td>
-                            <td>hoangthih_08@gmail.com</td>
-                            <td>0987654321</td>
-                            <td>Tổng hợp</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-                        <tr data-department="Kỹ thuật" data-gender="Nam">
-                            <td>Trần Văn I</td>
-                            <td>Nam</td>
-                            <td>tranvi_09@gmail.com</td>
-                            <td>0365987412</td>
-                            <td>Kỹ thuật</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-
-                        <tr data-department="Kế toán" data-gender="Nữ">
-                            <td>Nguyễn Thị K</td>
-                            <td>Nữ</td>
-                            <td>nguyenthik_10@gmail.com</td>
-                            <td>0123456789</td>
-                            <td>Kế toán</td>
-                            <td>
-                                <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                    <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                                </a>
-                                <button class="delete-btn">
-                                    <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                                </button>
-                            </td>
-                             
-                        </tr>
-
-                        <!-- Thêm các hàng dữ liệu khác tương tự -->
-                    </tbody>
-                </table>
             </div>
+
+            <table id="employeeTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Giới tính</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Phòng ban</th>
+                        <th>Sửa thông tin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
+                    <tr data-department="Tổng hợp" data-gender="Nam">
+                        <td>Nguyễn Văn A</td>
+                        <td>Nam</td>
+                        <td>nguyenvana_01@gmail.com</td>
+                        <td>0123456789</td>
+                        <td>Tổng hợp</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-department="Kế toán" data-gender="Nữ">
+                        <td>Trần Thị B</td>
+                        <td>Nữ</td>
+                        <td>tranthib_02@gmail.com</td>
+                        <td>0987654321</td>
+                        <td>Kế toán</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+                    <tr data-department="Nhân sự" data-gender="Nam">
+                        <td>Phạm Văn C</td>
+                        <td>Nam</td>
+                        <td>phamvanc_03@gmail.com</td>
+                        <td>0365987412</td>
+                        <td>Nhân sự</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+                    <tr data-department="Kỹ thuật" data-gender="Nữ">
+                        <td>Nguyễn Thị D</td>
+                        <td>Nữ</td>
+                        <td>nguyenthid_04@gmail.com</td>
+                        <td>0123456789</td>
+                        <td>Kỹ thuật</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+
+                    <tr data-department="Tổng hợp" data-gender="Nam">
+                        <td>Trần Văn E</td>
+                        <td>Nam</td>
+                        <td>tranve_05@gmail.com</td>
+                        <td>0987654321</td>
+                        <td>Tổng hợp</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+
+                    <tr data-department="Nhân sự" data-gender="Nữ">
+                        <td>Lê Thị F</td>
+                        <td>Nữ</td>
+                        <td>lethif_06@gmail.com</td>
+                        <td>0365987412</td>
+                        <td>Nhân sự</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+
+                    <tr data-department="Kế toán" data-gender="Nam">
+                        <td>Phạm Văn G</td>
+                        <td>Nam</td>
+                        <td>phamvang_07@gmail.com</td>
+                        <td>0123456789</td>
+                        <td>Kế toán</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+
+                    <tr data-department="Tổng hợp" data-gender="Nữ">
+                        <td>Hoàng Thị H</td>
+                        <td>Nữ</td>
+                        <td>hoangthih_08@gmail.com</td>
+                        <td>0987654321</td>
+                        <td>Tổng hợp</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+                    <tr data-department="Kỹ thuật" data-gender="Nam">
+                        <td>Trần Văn I</td>
+                        <td>Nam</td>
+                        <td>tranvi_09@gmail.com</td>
+                        <td>0365987412</td>
+                        <td>Kỹ thuật</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+
+                    <tr data-department="Kế toán" data-gender="Nữ">
+                        <td>Nguyễn Thị K</td>
+                        <td>Nữ</td>
+                        <td>nguyenthik_10@gmail.com</td>
+                        <td>0123456789</td>
+                        <td>Kế toán</td>
+                        <td>
+                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                            </a>
+                            <button class="delete-btn">
+                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                            </button>
+                        </td>
+                             
+                    </tr>
+
+                    <!-- Thêm các hàng dữ liệu khác tương tự -->
+                </tbody>
+            </table>
         </div>
+        
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

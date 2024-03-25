@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "PhanQuyenND";
+}
+
+
+
+<body>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <!-- Cột trái: Tên người dùng và vai trò -->
+            <div class="col-md-4 ml-5">
+                <!-- Thêm lớp ml-5 -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Thông Tin Người Dùng</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="username">Tên Người Dùng:</label>
+                                <div class="input-group">
+                                    <input type="text" id="username" name="username" class="form-control typeahead" placeholder="Tìm kiếm tên người dùng" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-primary text-white"><i class="fa fa-search"></i></span>
+                                    </div>
+                                </div>
+                                <div class="user-list mt-2"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Vai Trò:</label>
+                                <select id="role" name="role" class="form-control">
+                                    <option value="user">Người Dùng</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Cột phải: Phân quyền module -->
+            <div class="col-md-5">
+                <!-- Thay đổi col-md-8 thành col-md-5 -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Phân Quyền Module</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Module</th>
+                                    <th>Phân Quyền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Thêm Người Dùng</td>
+                                    <td><input type="checkbox" id="module1" name="module1"></td>
+                                </tr>
+                                <tr>
+                                    <td>Danh Sách Cán Bộ</td>
+                                    <td><input type="checkbox" id="module2" name="module2"></td>
+                                </tr>
+                                <tr>
+                                    <td>Phân Quyền</td>
+                                    <td><input type="checkbox" id="module3" name="module3"></td>
+                                </tr>
+                                <tr>
+                                    <td>Thêm Thiết Bị</td>
+                                    <td><input type="checkbox" id="module4" name="module4"></td>
+                                </tr>
+                                <tr>
+                                    <td>Danh Sách Thiết Bị</td>
+                                    <td><input type="checkbox" id="module5" name="module5"></td>
+                                </tr>
+                                <tr>
+                                    <td>Sửa Chữa</td>
+                                    <td><input type="checkbox" id="module6" name="module6"></td>
+                                </tr>
+                                <tr>
+                                    <td>Đăng Ký Sử Dụng Thiết Bị</td>
+                                    <td><input type="checkbox" id="module7" name="module7"></td>
+                                </tr>
+                                <tr>
+                                    <td>Thống Kê</td>
+                                    <td><input type="checkbox" id="module8" name="module8"></td>
+                                </tr>
+                                <!-- Thêm các dòng khác tương tự -->
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary">Lưu Phân Quyền</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <script>
+        // Script để xử lý sự kiện thay đổi vai trò
+        document.getElementById('role').addEventListener('change', function () {
+            var role = this.value;
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function (checkbox) {
+                if (role === 'admin') {
+                    checkbox.checked = true;
+                } else {
+                    if (checkbox.id !== 'module7') { // Chỉ module7 là đăng ký sử dụng thiết bị
+                        checkbox.checked = false;
+                    } else {
+                        checkbox.checked = true;
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>

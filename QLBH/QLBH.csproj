@@ -124,6 +124,7 @@
     <Compile Include="Controllers\DanhSachCanBoController.cs" />
     <Compile Include="Controllers\DanhSachThietBiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhanQuyenNguoiDungController.cs" />
     <Compile Include="Controllers\SuaChuaController.cs" />
     <Compile Include="Controllers\SuaThongTinCanBoController.cs" />
     <Compile Include="Controllers\ThemCBController.cs" />
@@ -194,6 +195,7 @@
     <Content Include="Views\DanhSachCanBo\DSCanBo.cshtml" />
     <Content Include="Views\SuaThongTinCanBo\SuaTTCanBo.cshtml" />
     <Content Include="Views\ThongKeThietBi\ThongKeTB.cshtml" />
+    <Content Include="Views\PhanQuyenNguoiDung\PhanQuyenND.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
