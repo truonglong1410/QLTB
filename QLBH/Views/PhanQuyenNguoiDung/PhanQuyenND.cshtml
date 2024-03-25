@@ -1,126 +1,206 @@
-﻿@{
-    ViewBag.Title = "PhanQuyenND";
+﻿
+@{
+    ViewBag.Title = "PhanQuyen";
 }
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    .border-1 {
+        display: none;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
 
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+</style>
 
 <body>
+    <div class="content-wrapper mb-5">
+        <h2 class="mx-4">Danh sách phân quyền</h2>
+        <button id="createButton" class="btn-primary btn mx-4 mb-2">Create</button>
+        <div id="createBox" class="border-1">
+            <div class="form-check-inline">
+                <div class="form-group mr-5">
+                    <label for="username">Tên người dùng:</label>
+                    <input type="text" list="name" id="username">
+                    <datalist id="name">
+                        <option value="Nguyễn Văn An">
+                        <option value="Trần Thị Bình">
+                        <option value="Phạm Văn Chí">
+                        <option value="Nguyễn Thị Diệu">
+                        <option value="Trần Văn Em">
+                        <option value="Lê Thị Gái">
+                        <option value="Phạm Văn Giai">
+                        <option value="Hoàng Thị Hà">
+                        <option value="Trần Văn Hy">
+                        <option value="Nguyễn Thị Kiều">
+                        <option value="Thái Thị Tuyền">
+                        <option value="Lưu Chí Vỹ">
+                    </datalist>
+                </div>
 
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <!-- Cột trái: Tên người dùng và vai trò -->
-            <div class="col-md-4 ml-5">
-                <!-- Thêm lớp ml-5 -->
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Thông Tin Người Dùng</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="username">Tên Người Dùng:</label>
-                                <div class="input-group">
-                                    <input type="text" id="username" name="username" class="form-control typeahead" placeholder="Tìm kiếm tên người dùng" required>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-primary text-white"><i class="fa fa-search"></i></span>
-                                    </div>
-                                </div>
-                                <div class="user-list mt-2"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="role">Vai Trò:</label>
-                                <select id="role" name="role" class="form-control">
-                                    <option value="user">Người Dùng</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
+                <div class="form-group">
+                    <label class="form-group" for="role">Quyền hạn:</label>
+                    <select id="role" class="form-control">
+                        <option value="choose">Chọn quyền hạn</option>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
                 </div>
             </div>
-            <!-- Cột phải: Phân quyền module -->
-            <div class="col-md-5">
-                <!-- Thay đổi col-md-8 thành col-md-5 -->
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Phân Quyền Module</h5>
-                    </div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th>Module</th>
-                                    <th>Phân Quyền</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Thêm Người Dùng</td>
-                                    <td><input type="checkbox" id="module1" name="module1"></td>
-                                </tr>
-                                <tr>
-                                    <td>Danh Sách Cán Bộ</td>
-                                    <td><input type="checkbox" id="module2" name="module2"></td>
-                                </tr>
-                                <tr>
-                                    <td>Phân Quyền</td>
-                                    <td><input type="checkbox" id="module3" name="module3"></td>
-                                </tr>
-                                <tr>
-                                    <td>Thêm Thiết Bị</td>
-                                    <td><input type="checkbox" id="module4" name="module4"></td>
-                                </tr>
-                                <tr>
-                                    <td>Danh Sách Thiết Bị</td>
-                                    <td><input type="checkbox" id="module5" name="module5"></td>
-                                </tr>
-                                <tr>
-                                    <td>Sửa Chữa</td>
-                                    <td><input type="checkbox" id="module6" name="module6"></td>
-                                </tr>
-                                <tr>
-                                    <td>Đăng Ký Sử Dụng Thiết Bị</td>
-                                    <td><input type="checkbox" id="module7" name="module7"></td>
-                                </tr>
-                                <tr>
-                                    <td>Thống Kê</td>
-                                    <td><input type="checkbox" id="module8" name="module8"></td>
-                                </tr>
-                                <!-- Thêm các dòng khác tương tự -->
-                            </tbody>
-                        </table>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-primary">Lưu Phân Quyền</button>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label>Quyền hạn nâng cao:</label>
+                <div class="form-check-inline">
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option1">Xem</label>
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option2">Sửa</label>
+                    <label><input type="checkbox" class="mx-2" name="advancedRole" value="option3">Xóa</label>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label>Phạm vi truy cập:</label>
+                <div class="form-check-inline">
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option4">Thêm người dùng</label>
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option5">Danh sách cán bộ</label>
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option6">Phân quyền người dùng</label>
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option7">Thêm thiết bị</label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="mr-2"><input type="checkbox" class="mx-2" name="advancedRole" value="option8">Danh sách thiết bị</label>
+                    <label class="mr-3"><input type="checkbox" class="mx-2" name="advancedRole" value="option9">Sửa chữa</label>
+                    <label class="mr-2 ml-5"><input type="checkbox" class="mx-2" id="advancedRoleDangKy" name="advancedRole" value="option10">Đăng ký sử dụng thiết bị</label>
+                    <label><input type="checkbox" class="mx-2" name="advancedRole" value="option11">Thống kê thiết bị</label>
+                </div>
+            </div>
+
+            <button id="submitButton" class="btn btn-primary">Lưu Phân Quyền</button>
         </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên người dùng</th>
+                    <th>Quyền hạn</th>
+                    <th>Thời gian cấp quyền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Nguyễn Văn An</td>
+                    <td>Admin</td>
+                    <td>3/24/2024, 2:20:49 PM</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Nguyễn Thị Bình</td>
+                    <td>User</td>
+                    <td>3/24/2024, 2:30:52 PM</td>
+                </tr>
+                <!-- Thêm các hàng khác tương tự -->
+            </tbody>
+        </table>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Script để xử lý sự kiện thay đổi vai trò
-        document.getElementById('role').addEventListener('change', function () {
+        var createButton = document.getElementById("createButton");
+        var createBox = document.getElementById("createBox");
+        var submitButton = document.getElementById("submitButton");
+
+        createButton.addEventListener("click", function () {
+            createBox.style.display = "block";
+        });
+
+        submitButton.addEventListener("click", function () {
+            var username = document.getElementById("username").value;
+            var role = document.getElementById("role").value;
+            var advancedRole = document.querySelector('input[name="advancedRole"]:checked').value;
+
+            // Logic to handle form submission
+
+            // Example: Display submitted values in console
+            console.log("Tên người dùng: " + username);
+            console.log("Quyền hạn: " + role);
+            console.log("Quyền hạn nâng cao: " + advancedRole);
+        });
+            document.getElementById('role').addEventListener('change', function () {
             var role = this.value;
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(function (checkbox) {
-                if (role === 'admin') {
+            var checkboxes = document.querySelectorAll('input[name="advancedRole"]');
+
+            // Nếu vai trò là quản trị viên
+            if (role === 'admin') {
+                checkboxes.forEach(function (checkbox) {
                     checkbox.checked = true;
-                } else {
-                    if (checkbox.id !== 'module7') { // Chỉ module7 là đăng ký sử dụng thiết bị
-                        checkbox.checked = false;
-                    } else {
-                        checkbox.checked = true;
-                    }
-                }
+                });
+            } else if (role === 'user') {
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+            // Chỉ tích vào các checkbox cần cho vai trò người dùng
+            document.getElementById('advancedRoleXem').checked = true;
+            document.getElementById('advancedRoleSua').checked = true;
+            document.getElementById('advancedRoleDangKy').checked = true;
+            }
+        });
+
+        var submitButton = document.getElementById("submitButton");
+
+        submitButton.addEventListener("click", function () {
+            var username = document.getElementById("username").value;
+            var role = document.getElementById("role").value;
+            var advancedRoles = document.querySelectorAll('input[name="advancedRole"]:checked');
+
+            var tableBody = document.querySelector("table tbody");
+
+            // Tạo một hàng mới trong bảng
+            var newRow = document.createElement("tr");
+
+            // Tạo các ô trong hàng mới
+            var idCell = document.createElement("td");
+            idCell.textContent = tableBody.childElementCount + 1; // Tăng giá trị ID tự động
+            var usernameCell = document.createElement("td");
+            usernameCell.textContent = username;
+            var roleCell = document.createElement("td");
+            roleCell.textContent = role;
+            var timeCell = document.createElement("td");
+            timeCell.textContent = new Date().toLocaleString();
+
+            // Thêm các ô vào hàng mới
+            newRow.appendChild(idCell);
+            newRow.appendChild(usernameCell);
+            newRow.appendChild(roleCell);
+            newRow.appendChild(timeCell);
+
+            // Thêm hàng mới vào tbody của bảng
+            tableBody.appendChild(newRow);
+
+            // Đặt lại giá trị của các trường nhập liệu
+            document.getElementById("username").value = "";
+            document.getElementById("role").value = "choose";
+            advancedRoles.forEach(function (checkbox) {
+                checkbox.checked = false;
             });
+
+            // Hiển thị thông tin đã nhập trong console
+            console.log("Tên người dùng: " + username);
+            console.log("Quyền hạn: " + role);
+            console.log("Quyền hạn nâng cao:");
+            advancedRoles.forEach(function (checkbox) {
+                console.log(checkbox.value);
+            });
+            console.log("Thời gian phân quyền: " + timeCell.textContent);
         });
     </script>
-
 </body>

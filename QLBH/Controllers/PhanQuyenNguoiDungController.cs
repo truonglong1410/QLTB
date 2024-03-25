@@ -8,11 +8,10 @@ namespace QLBH.Controllers
 {
     public class PhanQuyenNguoiDungController : Controller
     {
-        // GET: PhanQuyenNguoiDung
+        // GET: PhanQuyen
         public ActionResult PhanQuyenND()
         {
             return View();
         }
-       
     }
 }
