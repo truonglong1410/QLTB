@@ -21,6 +21,29 @@
             display: block;
             font-weight: bold;
         }
+
+    
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .content-wrapper {
+        flex: 1;
+    }
+
+    .main-footer {
+        flex-shrink: 0;
+        background-color: #ddeeff;
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: small;
+    }
+
 </style>
 
 <body>
@@ -31,7 +54,7 @@
             <div class="form-check-inline">
                 <div class="form-group mr-5">
                     <label for="username">Tên người dùng:</label>
-                    <input type="text" list="name" id="username">
+                    <input type="text" list="name" class="form-control" id="username">
                     <datalist id="name">
                         <option value="Nguyễn Văn An">
                         <option value="Trần Thị Bình">

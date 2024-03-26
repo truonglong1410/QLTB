@@ -3,6 +3,28 @@
     ViewBag.Title = "ThongKeTB";
 }
 
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .content-wrapper {
+        flex: 1;
+    }
+
+    .main-footer {
+        flex-shrink: 0;
+        background-color: #ddeeff;
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: small;
+    }
+</style>
 <div class="form-group content-wrapper mb-5">
     <div class="btn-group mt-3 mb-2 mx-3" role="group" aria-label="Select Chart">
         <button type="button" class="btn btn-primary" onclick="showProductChart()">Sản phẩm</button>

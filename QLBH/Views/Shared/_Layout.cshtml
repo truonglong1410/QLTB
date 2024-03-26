@@ -12,15 +12,37 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .main-footer {
-            flex-shrink: 0;
-            background-color: #ddeeff;
-            width: 100%;
-            height: 40px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            font-size: small;
+            background-color: #333; /* Màu nền */
+            color:black; /* Màu chữ */
+            font-size: 14px;
+            padding: 10px 0; /* Khoảng cách giữa nội dung và viền footer */
+            text-align: center; /* Căn giữa nội dung */
         }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between; /* Căn các phần nội dung sang hai bên */
+            align-items: center; /* Căn giữa theo trục tung */
+            max-width: 1200px; /* Giới hạn chiều rộng của footer */
+            margin: 0 auto; /* Căn giữa footer */
+        }
+
+        .footer-left,
+        .footer-right {
+            padding: 0 10px; /* Khoảng cách giữa nội dung và lề trái/phải */
+        }
+
+            .footer-left span,
+            .footer-right span {
+                display: block; /* Hiển thị mỗi phần tử trên một dòng */
+            }
+
+            .footer-right a {
+                color: #fff; /* Màu chữ cho các liên kết */
+                text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+            }
+
+
     </style>
 </head>
 
@@ -71,7 +93,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                    with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fa fa-fw fa-user"></i>
@@ -155,15 +177,15 @@
         </aside>
         @RenderBody()
 
-        <!-- Main Footer -->
         <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-left d-none d-sm-inline rounded-top">
-                Hotline: 0933-491-336 --
-                Email: longtrng71@gmail.com
-                <strong>Tech &copy; 2024 <a href="@Url.Action("Index", "Home")">Trang chủ</a>.</strong>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span>&copy; 2024 - Techcompany. Contact: 2051010178long@ou.edu.vn -- 0933491336.</span>
+                </div>
             </div>
         </footer>
+
+
     </div>
     <!-- ./wrapper -->
 

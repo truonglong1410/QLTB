@@ -3,6 +3,28 @@
     ViewBag.Title = "DSCanBo";
 }
 
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .content-wrapper {
+        flex: 1;
+    }
+
+    .main-footer {
+        flex-shrink: 0;
+        background-color: #ddeeff;
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: small;
+    }
+</style>
 <div class="content-wrapper">
     <div class="container wrapperm mb-5">
         <!-- Chú ý -->
@@ -20,18 +42,10 @@
                         <option value="Kỹ thuật">Kỹ thuật</option>
                     </select>
                 </div>
-                <div class="form-group mr-4">
-                    <label for="filterGender">Lọc theo giới tính:</label>
-                    <select class="form-control" id="filterGender">
-                        <option value="">Tất cả</option>
-                        <option value="Nam">Nam</option>
-                        <option value="Nữ">Nữ</option>
-                    </select>
-                </div>
                 <div class="form-group">
-                    <label for="searchName">Tìm kiếm theo tên:</label>
+                    <label for="searchName">Tìm kiếm:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="searchName" placeholder="Nhập tên...">
+                        <input type="text" class="form-control" id="searchName" placeholder="Nhập tên, email, SĐT...">
                         <div class="input-group-append">
                             <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
                         </div>
@@ -43,7 +57,6 @@
                 <thead>
                     <tr>
                         <th>Họ và tên</th>
-                        <th>Giới tính</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
                         <th>Phòng ban</th>
@@ -54,7 +67,7 @@
                     <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
                     <tr data-department="Tổng hợp" data-gender="Nam">
                         <td>Nguyễn Văn An</td>
-                        <td>Nam</td>
+                         
                         <td>nguyenvanan_01@gmail.com</td>
                         <td>0123456789</td>
                         <td>Tổng hợp</td>
@@ -69,7 +82,7 @@
                     </tr>
                     <tr data-department="Kế toán" data-gender="Nữ">
                         <td>Trần Thị Bình</td>
-                        <td>Nữ</td>
+                         
                         <td>tranthibinh_02@gmail.com</td>
                         <td>0135791234</td>
                         <td>Kế toán</td>
@@ -85,7 +98,7 @@
                     </tr>
                     <tr data-department="Nhân sự" data-gender="Nam">
                         <td>Phạm Văn Chí</td>
-                        <td>Nam</td>
+                         
                         <td>phamvanchi_03@gmail.com</td>
                         <td>0345825798</td>
                         <td>Nhân sự</td>
@@ -101,7 +114,7 @@
                     </tr>
                     <tr data-department="Kỹ thuật" data-gender="Nữ">
                         <td>Nguyễn Thị Diệu</td>
-                        <td>Nữ</td>
+                         
                         <td>nguyenthidieu_04@gmail.com</td>
                         <td>0254825684</td>
                         <td>Kỹ thuật</td>
@@ -118,7 +131,7 @@
 
                     <tr data-department="Tổng hợp" data-gender="Nam">
                         <td>Trần Văn Em</td>
-                        <td>Nam</td>
+                         
                         <td>tranvanem_05@gmail.com</td>
                         <td>0356565656</td>
                         <td>Tổng hợp</td>
@@ -135,7 +148,7 @@
 
                     <tr data-department="Nhân sự" data-gender="Nữ">
                         <td>Lê Thị Gái</td>
-                        <td>Nữ</td>
+                         
                         <td>lethigai_06@gmail.com</td>
                         <td>0958859958</td>
                         <td>Nhân sự</td>
@@ -152,7 +165,7 @@
 
                     <tr data-department="Kế toán" data-gender="Nam">
                         <td>Phạm Văn Giai</td>
-                        <td>Nam</td>
+                         
                         <td>phamvangiai_07@gmail.com</td>
                         <td>0738856584</td>
                         <td>Kế toán</td>
@@ -169,7 +182,7 @@
 
                     <tr data-department="Tổng hợp" data-gender="Nữ">
                         <td>Hoàng Thị Hà</td>
-                        <td>Nữ</td>
+                         
                         <td>hoangthiha_08@gmail.com</td>
                         <td>0125489789</td>
                         <td>Tổng hợp</td>
@@ -185,7 +198,7 @@
                     </tr>
                     <tr data-department="Kỹ thuật" data-gender="Nam">
                         <td>Trần Văn Hy</td>
-                        <td>Nam</td>
+                         
                         <td>tranvanhy_09@gmail.com</td>
                         <td>0785858585</td>
                         <td>Kỹ thuật</td>
@@ -202,7 +215,7 @@
 
                     <tr data-department="Kế toán" data-gender="Nữ">
                         <td>Nguyễn Thị Kiều</td>
-                        <td>Nữ</td>
+                         
                         <td>nguyenthikieu_10@gmail.com</td>
                         <td>0258789963</td>
                         <td>Kế toán</td>
@@ -218,7 +231,7 @@
                     </tr>
                     <tr data-department="Kế toán" data-gender="Nữ">
                         <td>Thái Thị Tuyền</td>
-                        <td>Nữ</td>
+                         
                         <td>thaithituyen_11@gmail.com</td>
                         <td>0359157759</td>
                         <td>Nhân sự</td>
@@ -234,7 +247,7 @@
                     </tr>
                     <tr data-department="Kế toán" data-gender="Nữ">
                         <td>Lưu Chí Vỹ</td>
-                        <td>Nam</td>
+                         
                         <td>luuchivy_12@gmail.com</td>
                         <td>0258369147</td>
                         <td>Kỹ thuật</td>
@@ -267,11 +280,6 @@
             filterEmployees($(this).val(), $('#filterGender').val());
         });
 
-        // Bắt sự kiện thay đổi trong dropdown lọc giới tính
-        $('#filterGender').change(function () {
-            filterEmployees($('#filterDepartment').val(), $(this).val());
-        });
-
         // Bắt sự kiện click vào nút tìm kiếm
         $('#searchButton').click(function () {
             var searchText = $('#searchName').val().toLowerCase();
@@ -296,8 +304,10 @@
         function filterEmployeesBySearch(searchText) {
             $('#employeeTable tbody tr').each(function () {
                 var employeeName = $(this).find('td:first-child').text().toLowerCase();
+                var employeeEmail = $(this).find('td:nth-child(2)').text().toLowerCase();
+                var employeePhone = $(this).find('td:nth-child(3)').text().toLowerCase();
 
-                if (employeeName.includes(searchText)) {
+                if (employeeName.includes(searchText) || employeeEmail.includes(searchText) || employeePhone.includes(searchText)) {
                     $(this).show();
                 } else {
                     $(this).hide();
@@ -305,6 +315,7 @@
             });
         }
     });
+    
 
     // Xử lý sự kiện xóa cán bộ
     document.addEventListener("DOMContentLoaded", function () {

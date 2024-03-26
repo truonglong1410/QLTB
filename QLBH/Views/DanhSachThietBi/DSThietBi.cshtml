@@ -73,6 +73,7 @@
                         <tr>
                             <th>Loại thiết bị</th>
                             <th>Tên thiết bị</th>
+                            <th>Mã sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Ngày tiếp nhận</th>
                             <th>Bảo hành</th>
@@ -140,15 +141,16 @@
         var tableBody = document.getElementById('productList').getElementsByTagName('tbody')[0];
         tableBody.innerHTML = '';
 
-        filteredList.forEach(function (product) {
+        filteredList.forEach(function (product, index) {
             var newRow = tableBody.insertRow();
             newRow.innerHTML = `
-                <td>${product.deviceType}</td>
-                <td>${product.deviceName}</td>
-                <td>${product.quantity}</td>
-                <td>${product.dayReception}</td>
-                <td>${product.warrantyPeriod}</td>
-            `;
+            <td>${product.deviceType}</td>
+            <td>${product.deviceName}</td>
+            <td><input type="text" class="form-control" id="snInput${index}" onchange="updateSerialNumber(${index}, this.value)"></td>
+            <td>${product.quantity}</td>
+            <td>${product.dayReception}</td>
+            <td>${product.warrantyPeriod}</td>
+        `;
         });
     }
 
@@ -157,17 +159,27 @@
         var tableBody = document.getElementById('productList').getElementsByTagName('tbody')[0];
         tableBody.innerHTML = '';
 
-        productList.forEach(function (product) {
+        productList.forEach(function (product, index) {
             var newRow = tableBody.insertRow();
             newRow.innerHTML = `
-                <td>${product.deviceType}</td>
-                <td>${product.deviceName}</td>
-                <td>${product.quantity}</td>
-                <td>${product.dayReception}</td>
-                <td>${product.warrantyPeriod}</td>
-            `;
+            <td>${product.deviceType}</td>
+            <td>${product.deviceName}</td>
+            <td><input type="text" class="form-control" id="snInput${index}" onchange="updateSerialNumber(${index}, this.value)"></td>
+            <td>${product.quantity}</td>
+            <td>${product.dayReception}</td>
+            <td>${product.warrantyPeriod}</td>
+        `;
         });
     }
+
+    // Lưu số S/N được nhập bởi người dùng
+    function updateSerialNumber(index, value) {
+        var serialNumber = parseInt(value);
+        if (!isNaN(serialNumber)) {
+            startingSerialNumber = serialNumber - index;
+        }
+    }
+
     // Hàm thêm nút nhân bản phía sau mỗi dòng trong bảng sản phẩm
         function addDuplicateButton() {
         var tableRows = document.querySelectorAll('#productList tbody tr');

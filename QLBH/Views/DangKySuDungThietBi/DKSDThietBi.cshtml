@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "DKSDThietBi";
 }
 
@@ -24,214 +23,313 @@
         left: 0;
         font-size: small;
     }
-</style>
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Cán bộ quản lý thiết bị</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Đăng ký sử dụng thiết bị</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="container wrapper mb-5">
-        <!--chú ý-->
-        <div class="row mt-4">
-            <div class="col-md-9 offset-md-1">
-                <form>
-                    <div class="form-check-inline form-group">
-                        <div class="form-group col-md-6">
-                            <label for="fullName">Họ và tên: </label>
-                            <input type="text" class="form-control" id="fullName" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="department">Phòng ban:</label>
-                            <select class="form-control" id="department" required>
-                                <option value="">Chọn phòng ban</option>
-                                <option value="Tổng hợp">Tổng hợp</option>
-                                <option value="Kế toán">Kế toán</option>
-                                <option value="Nhân sự">Nhân sự</option>
-                                <option value="Kỹ thuật">Kỹ thuật</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="ngayBanGiao">Ngày bàn giao:</label><br>
-                            <input type="date" class="form-control" id="ngayBanGiao">
-                        </div>
-                    </div>
-                    <div class="form-check-inline form-group">
-                        <div class="form-group col-md-5">
-                            <label for="deviceName">Tên thiết bị:</label>
-                            <input type="text" class="form-control" id="deviceName">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="deviceType">Loại thiết bị:</label>
-                            <select class="form-control" id="deviceType">
-                                <option value="">Chọn loại thiết bị</option>
-                                <option value="chair">Bàn ghế</option>
-                                <option value="screen">Màn hình</option>
-                                <option value="laptop">Laptop</option>
-                                <option value="airConditional">Máy điều hòa</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="status">Tình trạng:</label>
-                            <select class="form-control" id="status" required>
-                                <option value="">Chọn tình trạng</option>
-                                <option value="Sản phẩm mới">Sản phẩm mới</option>
-                                <option value="Đã qua sử dụng còn bảo hành">Đã qua sử dụng còn bảo hành</option>
-                                <option value="Đã qua sử dụng hết bảo hành">Đã qua sử dụng hết bảo hành</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-1 mx-3">Thêm thông tin</button>
-                </form>
-            </div>
-        </div>
-        <table class="table table-bordered mt-2">
-            <thead>
-                <tr>
-                    <th>Họ và tên</th>
-                    <th>Phòng ban</th>
-                    <th>Tên thiết bị</th>
-                    <th>Loại thiết bị</th>
-                    <th>Tình trạng</th>
-                    <th>Ngày bàn giao</th>
-                </tr>
-            </thead>
-            <tbody id="employeeDeviceList">
-                <!-- Dữ liệu nhân viên và thiết bị sẽ được thêm vào đây -->
-                <tr>
-                    <td>Nguyễn Văn A</td>
-                    <td>Kỹ thuật</td>
-                    <td>Laptop Dell</td>
-                    <td>Laptop</td>
-                    <td>Sản phẩm mới</td>
-                    <td>2024-03-20</td>
-                </tr>
-                <tr>
-                    <td>Trần Thị B</td>
-                    <td>Kế toán</td>
-                    <td>Màn hình Samsung</td>
-                    <td>Màn hình</td>
-                    <td>Đã qua sử dụng còn bảo hành</td>
-                    <td>2024-03-18</td>
-                </tr>
-                <tr>
-                    <td>Phạm Văn C</td>
-                    <td>Tổng hợp</td>
-                    <td>Bàn làm việc</td>
-                    <td>Bàn ghế</td>
-                    <td>Đã qua sử dụng hết bảo hành</td>
-                    <td>2024-03-19</td>
-                </tr>
-                <tr>
-                    <td>Lê Thị D</td>
-                    <td>Tổng hợp</td>
-                    <td>Máy điều hòa Panasonic</td>
-                    <td>Máy điều hòa</td>
-                    <td>Đã qua sử dụng còn bảo hành</td>
-                    <td>2024-03-17</td>
-                </tr>
-                <tr>
-                    <td>Hoàng Văn E</td>
-                    <td>Nhân sự</td>
-                    <td>Bàn ghế xoay</td>
-                    <td>Bàn ghế</td>
-                    <td>Đã qua sử dụng còn bảo hành</td>
-                    <td>2024-03-16</td>
-                </tr>
-                <tr>
-                    <td>Đỗ Thị F</td>
-                    <td>Kỹ thuật</td>
-                    <td>Laptop HP</td>
-                    <td>Laptop</td>
-                    <td>Đã qua sử dụng hết bảo hành</td>
-                    <td>2024-03-15</td>
-                </tr>
-                <tr>
-                    <td>Trần Văn G</td>
-                    <td>Kỹ thuật</td>
-                    <td>Màn hình Dell</td>
-                    <td>Màn hình</td>
-                    <td>Đã qua sử dụng còn bảo hành</td>
-                    <td>2024-03-14</td>
-                </tr>
-                <tr>
-                    <td>Nguyễn Thị H</td>
-                    <td>Kế toán</td>
-                    <td>Bàn làm việc</td>
-                    <td>Bàn ghế</td>
-                    <td>Đã qua sử dụng hết bảo hành</td>
-                    <td>2024-03-13</td>
-                </tr>
-                <tr>
-                    <td>Lê Văn I</td>
-                    <td>Nhân sự</td>
-                    <td>Màn hình ASUS</td>
-                    <td>Màn hình</td>
-                    <td>Sản phẩm mới</td>
-                    <td>2024-03-12</td>
-                </tr>
-                <tr>
-                    <td>Phan Thị K</td>
-                    <td>Kỹ thuật</td>
-                    <td>Màn hình Samsung</td>
-                    <td>Màn hình</td>
-                    <td>Đã qua sử dụng hết bảo hành</td>
-                    <td>2024-03-11</td>
-                </tr>
 
-            </tbody>
-        </table>
+</style>
+<body>
+    
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Cán bộ quản lý thiết bị</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Đăng ký sử dụng thiết bị</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <div class="container wrapper mb-5">
+            <!--chú ý-->
+            <div class="row mt-4">
+                <div class="col-md-9 offset-md-1">
+                    <form>
+                        <div class="form-check-inline form-group">
+                            <div class="form-group col-md-6">
+                                <label for="fullName">Họ và tên: </label>
+                                <input type="text" list="name" class="form-control" id="fullName" required>
+                                <datalist id="name">
+                                    <option value="Nguyễn Văn An">
+                                    <option value="Trần Thị Bình">
+                                    <option value="Phạm Văn Chí">
+                                    <option value="Nguyễn Thị Diệu">
+                                    <option value="Trần Văn Em">
+                                    <option value="Lê Thị Gái">
+                                    <option value="Phạm Văn Giai">
+                                    <option value="Hoàng Thị Hà">
+                                    <option value="Trần Văn Hy">
+                                    <option value="Nguyễn Thị Kiều">
+                                    <option value="Thái Thị Tuyền">
+                                    <option value="Lưu Chí Vỹ">
+                                </datalist>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="maThietBi">Mã thiết bị:</label>
+                                <input type="text" list="ma" class="form-control" id="maThietBi" required>
+                                <datalist id="ma">
+                                    <option value="003">Bàn làm việc</option>
+                                    <option value="007">Bàn làm việc</option>
+                                    <option value="009">Bàn ghế xoay</option>
+                                    <option value="013">Bàn ghế xoay</option>
+                                    <option value="015">Bàn làm việc</option>
+                                    <option value="019">Bàn ghế xoay</option>
+                                    <option value="021">Bàn làm việc</option>
+                                    <option value="025">Bàn làm việc</option>
+                                    <option value="028">Bàn làm việc</option>
+                                    <option value="032">Bàn làm việc</option>
+                                    <option value="036">Bàn làm việc</option>
+                                    <option value="040">Bàn làm việc</option>
+                                    <option value="044">Bàn làm việc</option>
+                                    <option value="048">Bàn làm việc</option>
+                                    <option value="002">Màn hình Samsung</option>
+                                    <option value="006">Màn hình Dell</option>
+                                    <option value="010">Màn hình ASUS</option>
+                                    <option value="011">Màn hình Samsung</option>
+                                    <option value="012">Màn hình LG</option>
+                                    <option value="017">Màn hình LG</option>
+                                    <option value="023">Màn hình Dell</option>
+                                    <option value="026">Màn hình LG</option>
+                                    <option value="030">Màn hình Samsung</option>
+                                    <option value="034">Màn hình LG</option>
+                                    <option value="038">Màn hình Samsung</option>
+                                    <option value="042">Màn hình LG</option>
+                                    <option value="046">Màn hình Samsung</option>
+                                    <option value="050">Màn hình LG</option>
+                                    <option value="001">Laptop Dell</option>
+                                    <option value="005">Laptop HP</option>
+                                    <option value="016">Laptop Lenovo</option>
+                                    <option value="022">Laptop Asus</option>
+                                    <option value="029">Laptop Lenovo</option>
+                                    <option value="033">Laptop Asus</option>
+                                    <option value="037">Laptop Lenovo</option>
+                                    <option value="041">Laptop Asus</option>
+                                    <option value="045">Laptop Lenovo</option>
+                                    <option value="049">Laptop Asus</option>
+                                    <option value="008">Máy điều hòa Panasonic</option>
+                                    <option value="014">Máy điều hòa Toshiba</option>
+                                    <option value="018">Máy điều hòa Mitsubishi</option>
+                                    <option value="020">Máy điều hòa Toshiba</option>
+                                    <option value="024">Máy điều hòa Mitsubishi</option>
+                                    <option value="027">Máy điều hòa Panasonic</option>
+                                    <option value="031">Máy điều hòa Toshiba</option>
+                                    <option value="035">Máy điều hòa Mitsubishi</option>
+                                    <option value="039">Máy điều hòa Toshiba</option>
+                                    <option value="043">Máy điều hòa Panasonic</option>
+                                    <option value="047">Máy điều hòa Toshiba</option>
+
+
+                                </datalist>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="ngayBanGiao">Ngày bàn giao:</label><br>
+                                <input type="date" class="form-control" id="ngayBanGiao" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-1 mx-3">Thêm thông tin</button>
+                    </form>
+                    <div class="form-row align-items-center mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="searchInput">Tìm kiếm: </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchInput" placeholder="Nhập họ tên, mã thiết bị hoặc tên thiết bị...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">Tìm</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="deviceTypeFilter">Loại thiết bị: </label>
+                            <select class="custom-select" id="deviceTypeFilter">
+                                <option value="">Tất cả</option>
+                                <option value="Bàn ghế">Bàn ghế</option>
+                                <option value="Màn hình">Màn hình</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Máy điều hòa">Máy điều hòa</option>
+                                <!-- Thêm các loại thiết bị khác vào đây nếu cần -->
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-bordered mt-2">
+                <thead>
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Mã thiết bị</th>
+                        <th>Tên thiết bị</th>
+                        <th>Loại thiết bị</th>
+                        <th>Tình trạng</th>
+                        <th>Ngày bàn giao</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeDeviceList">
+                    <!-- Dữ liệu nhân viên và thiết bị sẽ được thêm vào đây -->
+                </tbody>
+            </table>
+            <div class="message-box" id="messageBox"></div>
+        </div>
     </div>
-</div>
+</body>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const form = document.querySelector("form");
         const tableBody = document.getElementById("employeeDeviceList");
+        const messageBox = document.getElementById("messageBox");
+        const searchInput = document.getElementById("searchInput");
+        const deviceTypeFilter = document.getElementById("deviceTypeFilter");
 
         form.addEventListener("submit", function (event) {
             event.preventDefault();
 
             // Lấy dữ liệu từ form
             const fullName = document.getElementById("fullName").value;
-            const department = document.getElementById("department").value;
-            const deviceName = document.getElementById("deviceName").value;
-            const deviceType = document.getElementById("deviceType").value;
-            const status = document.getElementById("status").value;
+            const maThietBi = document.getElementById("maThietBi").value;
             const ngayBanGiao = document.getElementById("ngayBanGiao").value;
+
+            // Kiểm tra xem mã thiết bị đã tồn tại trong bảng chưa
+            if (isDeviceCodeExists(maThietBi)) {
+                messageBox.textContent = "Mã thiết bị đã tồn tại!";
+                return;
+            }
 
             // Tạo một hàng mới trong bảng
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
-            <td>${fullName}</td>
-            <td>${department}</td>
-            <td>${deviceName}</td>
-            <td>${deviceType}</td>
-            <td>${status}</td>
-            <td>${ngayBanGiao}</td>
-        `;
+                <td>${fullName}</td>
+                <td>${maThietBi}</td>
+                <td id="deviceName_${maThietBi}"></td>
+                <td id="deviceType_${maThietBi}"></td>
+                <td>Sản phẩm mới</td>
+                <td>${ngayBanGiao}</td>
+            `;
 
             // Thêm hàng mới vào bảng
             tableBody.appendChild(newRow);
 
             // Xóa dữ liệu trong form sau khi thêm thành công
             form.reset();
-        });
-    });
 
+            // Tìm và điền thông tin của thiết bị dựa trên mã thiết bị
+            fillDeviceInfo(maThietBi);
+        });
+
+        // Hàm điền thông tin của thiết bị dựa trên mã thiết bị
+        function fillDeviceInfo(maThietBi) {
+            const deviceInfo = getDeviceInfoFromAPI(maThietBi);
+
+            if (deviceInfo) {
+                const deviceNameCell = document.getElementById(`deviceName_${maThietBi}`);
+                const deviceTypeCell = document.getElementById(`deviceType_${maThietBi}`);
+                deviceNameCell.textContent = deviceInfo.deviceName;
+                deviceTypeCell.textContent = deviceInfo.deviceType;
+            }
+        }
+
+        // Hàm giả định để lấy thông tin của thiết bị từ API
+        function getDeviceInfoFromAPI(maThietBi) {
+            const deviceData = {
+                "001": { deviceName: "Laptop Dell", deviceType: "Laptop" },
+                "002": { deviceName: "Màn hình Samsung", deviceType: "Màn hình" },
+                "003": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "004": { deviceName: "Bàn ghế xoay", deviceType: "Bàn ghế" },
+                "005": { deviceName: "Laptop HP", deviceType: "Laptop" },
+                "006": { deviceName: "Màn hình Dell", deviceType: "Màn hình" },
+                "007": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "008": { deviceName: "Máy điều hòa Panasonic", deviceType: "Máy điều hòa" },
+                "009": { deviceName: "Bàn ghế xoay", deviceType: "Bàn ghế" },
+                "010": { deviceName: "Màn hình ASUS", deviceType: "Màn hình" },
+                "011": { deviceName: "Màn hình Samsung", deviceType: "Màn hình" },
+                "012": { deviceName: "Màn hình LG", deviceType: "Màn hình" },
+                "013": { deviceName: "Bàn ghế xoay", deviceType: "Bàn ghế" },
+                "014": { deviceName: "Máy điều hòa Toshiba", deviceType: "Máy điều hòa" },
+                "015": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "016": { deviceName: "Laptop Lenovo", deviceType: "Laptop" },
+                "017": { deviceName: "Màn hình LG", deviceType: "Màn hình" },
+                "018": { deviceName: "Máy điều hòa Mitsubishi", deviceType: "Máy điều hòa" },
+                "019": { deviceName: "Bàn ghế xoay", deviceType: "Bàn ghế" },
+                "020": { deviceName: "Máy điều hòa Toshiba", deviceType: "Máy điều hòa" },
+                "021": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "022": { deviceName: "Laptop Asus", deviceType: "Laptop" },
+                "023": { deviceName: "Màn hình Dell", deviceType: "Màn hình" },
+                "024": { deviceName: "Máy điều hòa Mitsubishi", deviceType: "Máy điều hòa" },
+                "025": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "026": { deviceName: "Màn hình LG", deviceType: "Màn hình" },
+                "027": { deviceName: "Máy điều hòa Panasonic", deviceType: "Máy điều hòa" },
+                "028": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "029": { deviceName: "Laptop Lenovo", deviceType: "Laptop" },
+                "030": { deviceName: "Màn hình Samsung", deviceType: "Màn hình" },
+                "031": { deviceName: "Máy điều hòa Toshiba", deviceType: "Máy điều hòa" },
+                "032": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "033": { deviceName: "Màn hình LG", deviceType: "Màn hình" },
+                "035": { deviceName: "Máy điều hòa Mitsubishi", deviceType: "Máy điều hòa" },
+                "036": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "037": { deviceName: "Laptop Lenovo", deviceType: "Laptop" },
+                "038": { deviceName: "Màn hình Samsung", deviceType: "Màn hình" },
+                "039": { deviceName: "Máy điều hòa Toshiba", deviceType: "Máy điều hòa" },
+                "040": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "041": { deviceName: "Laptop Asus", deviceType: "Laptop" },
+                "042": { deviceName: "Màn hình LG", deviceType: "Màn hình" },
+                "043": { deviceName: "Máy điều hòa Panasonic", deviceType: "Máy điều hòa" },
+                "044": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "045": { deviceName: "Laptop Lenovo", deviceType: "Laptop" },
+                "046": { deviceName: "Màn hình Samsung", deviceType: "Màn hình" },
+                "047": { deviceName: "Máy điều hòa Toshiba", deviceType: "Máy điều hòa" },
+                "048": { deviceName: "Bàn làm việc", deviceType: "Bàn ghế" },
+                "049": { deviceName: "Laptop Asus", deviceType: "Laptop" },
+                "050": { deviceName: "Màn hình LG", deviceType: "Màn hình" }
+                // Thêm các thông tin của các thiết bị khác ở đây nếu cần
+            };
+
+            // Kiểm tra xem mã thiết bị có tồn tại trong dữ liệu không
+            if (maThietBi in deviceData) {
+                return deviceData[maThietBi]; // Trả về thông tin của thiết bị nếu có
+            } else {
+                return null; // Trả về null nếu không tìm thấy thông tin của thiết bị
+            }
+        }
+
+        // Hàm kiểm tra xem mã thiết bị đã tồn tại trong bảng chưa
+        function isDeviceCodeExists(maThietBi) {
+            const deviceCodes = Array.from(tableBody.querySelectorAll("td:nth-child(2)"));
+            return deviceCodes.some((code) => code.textContent === maThietBi);
+        }
+
+        // Sự kiện khi nhấn nút Tìm
+        searchInput.addEventListener("input", filterTable);
+        deviceTypeFilter.addEventListener("change", filterTable);
+
+        // Hàm lọc bảng
+        function filterTable() {
+            const searchText = searchInput.value.trim().toLowerCase();
+            const selectedDeviceType = deviceTypeFilter.value.toLowerCase();
+
+            const rows = Array.from(document.querySelectorAll("#employeeDeviceList tr"));
+
+            rows.forEach(row => {
+                const fullName = row.querySelector("td:nth-child(1)").textContent.trim().toLowerCase();
+                const deviceCode = row.querySelector("td:nth-child(2)").textContent.trim().toLowerCase();
+                const deviceName = row.querySelector("td:nth-child(3)").textContent.trim().toLowerCase();
+                const deviceType = row.querySelector("td:nth-child(4)").textContent.trim().toLowerCase();
+
+                const matchFullName = fullName.includes(searchText);
+                const matchDeviceCode = deviceCode.includes(searchText);
+                const matchDeviceName = deviceName.includes(searchText);
+                const matchDeviceType = selectedDeviceType === "" || deviceType.includes(selectedDeviceType);
+
+                const showRow = matchFullName || matchDeviceCode || matchDeviceName;
+                row.style.display = (showRow && matchDeviceType) ? "" : "none";
+            });
+        }
+    });
 </script>
 <!-- /.content-wrapper -->
 <!-- Control Sidebar -->
@@ -239,4 +337,3 @@
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-
