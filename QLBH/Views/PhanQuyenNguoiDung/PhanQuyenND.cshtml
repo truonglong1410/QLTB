@@ -1,50 +1,45 @@
 ﻿
-@{
-    ViewBag.Title = "PhanQuyen";
-}
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-    .border-1 {
-        display: none;
-        margin-top: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
-
-    .form-group {
-        margin-bottom: 10px;
-    }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* CSS styles */
+        .border-1 {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
         }
 
-    
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+        .form-group {
+            margin-bottom: 10px;
+        }
 
-    .content-wrapper {
-        flex: 1;
-    }
+            .form-group label {
+                display: block;
+                font-weight: bold;
+            }
 
-    .main-footer {
-        flex-shrink: 0;
-        background-color: #ddeeff;
-        width: 100%;
-        height: 40px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        font-size: small;
-    }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-</style>
+        .content-wrapper {
+            flex: 1;
+        }
+
+        .main-footer {
+            flex-shrink: 0;
+            background-color: #ddeeff;
+            width: 100%;
+            height: 40px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            font-size: small;
+        }
+    </style>
 
 <body>
     <div class="content-wrapper mb-5">
@@ -107,7 +102,7 @@
 
             <button id="submitButton" class="btn btn-primary">Lưu Phân Quyền</button>
         </div>
-        <table class="table table-bordered">
+        <table id="permissionTable" class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th>ID</th>
@@ -117,26 +112,76 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Nguyễn Văn An</td>
-                    <td>Admin</td>
-                    <td>3/24/2024, 2:20:49 PM</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Nguyễn Thị Bình</td>
-                    <td>User</td>
-                    <td>3/24/2024, 2:30:52 PM</td>
-                </tr>
-                <!-- Thêm các hàng khác tương tự -->
+                <!-- Table rows will be dynamically generated here -->
             </tbody>
         </table>
+        <ul id="pagination" class="pagination justify-content-center"></ul>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var rowsPerPage = 10; // Số lượng hàng trên mỗi trang
+            var currentPage = 1; // Trang hiện tại
+
+            function createPagination(totalPages) {
+                $('#pagination').empty();
+
+                for (var i = 1; i <= totalPages; i++) {
+                    var listItem = $('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
+                    $('#pagination').append(listItem);
+                }
+                $('.page-link').click(function () {
+                    currentPage = parseInt($(this).text());
+                    showPage(currentPage);
+                });
+
+                showPage(currentPage);
+            }
+
+            function showPage(pageNumber) {
+                var startIndex = (pageNumber - 1) * rowsPerPage;
+                var endIndex = startIndex + rowsPerPage;
+
+                $('#permissionTable tbody tr').hide();
+
+                $('#permissionTable tbody tr').slice(startIndex, endIndex).show();
+            }
+
+            var exampleData = [
+                { id: 1, username: 'Nguyễn Văn An', role: 'Admin', time: '3/24/2024, 2:20:49 PM' },
+                { id: 2, username: 'Nguyễn Thị Bình', role: 'User', time: '3/24/2024, 2:30:52 PM' },
+                { id: 3, username: 'Phạm Văn Chí', role: 'User', time: '3/24/2024, 3:20:49 PM' },
+                { id: 4, username: 'Nguyễn Thị Diệu', role: 'User', time: '3/24/2024, 3:25:52 PM' },
+                { id: 5, username: 'Trần Văn Em', role: 'Admin', time: '3/24/2024, 3:40:12 PM' },
+                { id: 6, username: 'Lê Thị Gái', role: 'User', time: '3/24/2024, 3:42:00 PM' },
+                { id: 7, username: 'Phạm Văn Giai', role: 'User', time: '3/24/2024, 3:52:09 PM' },
+                { id: 8, username: 'Hoàng Thị Hà', role: 'User', time: '3/24/2024, 4:10:22 PM' },
+                { id: 9, username: 'Trần Văn Hy', role: 'User', time: '3/24/2024, 4:18:11 PM' },
+                { id: 10, username: 'Nguyễn Thị Kiều', role: 'User', time: '3/24/2024, 4:20:32 PM' },
+                { id: 11, username: 'Thái Thị Tuyền', role: 'Admin', time: '3/24/2024, 4:28:33 PM' },
+                { id: 12, username: 'Lưu Chí Vỹ', role: 'User', time: '3/24/2024, 4:30:47 PM' },
+                // Add more example data here
+            ];
+
+            function populateTable(data) {
+                var tbody = $('#permissionTable tbody');
+                tbody.empty();
+
+                data.forEach(function (item) {
+                    var row = $('<tr><td>' + item.id + '</td><td>' + item.username + '</td><td>' + item.role + '</td><td>' + item.time + '</td></tr>');
+                    tbody.append(row);
+                });
+
+                var totalPages = Math.ceil(data.length / rowsPerPage);
+                createPagination(totalPages);
+            }
+
+            populateTable(exampleData);
+        });
+    </script>
     <script>
         var createButton = document.getElementById("createButton");
         var createBox = document.getElementById("createBox");
@@ -151,18 +196,15 @@
             var role = document.getElementById("role").value;
             var advancedRole = document.querySelector('input[name="advancedRole"]:checked').value;
 
-            // Logic to handle form submission
-
-            // Example: Display submitted values in console
             console.log("Tên người dùng: " + username);
             console.log("Quyền hạn: " + role);
             console.log("Quyền hạn nâng cao: " + advancedRole);
         });
-            document.getElementById('role').addEventListener('change', function () {
+
+        document.getElementById('role').addEventListener('change', function () {
             var role = this.value;
             var checkboxes = document.querySelectorAll('input[name="advancedRole"]');
 
-            // Nếu vai trò là quản trị viên
             if (role === 'admin') {
                 checkboxes.forEach(function (checkbox) {
                     checkbox.checked = true;
@@ -171,10 +213,9 @@
                 checkboxes.forEach(function (checkbox) {
                     checkbox.checked = false;
                 });
-            // Chỉ tích vào các checkbox cần cho vai trò người dùng
-            document.getElementById('advancedRoleXem').checked = true;
-            document.getElementById('advancedRoleSua').checked = true;
-            document.getElementById('advancedRoleDangKy').checked = true;
+                document.getElementById('advancedRoleXem').checked = true;
+                document.getElementById('advancedRoleSua').checked = true;
+                document.getElementById('advancedRoleDangKy').checked = true;
             }
         });
 
@@ -187,12 +228,10 @@
 
             var tableBody = document.querySelector("table tbody");
 
-            // Tạo một hàng mới trong bảng
             var newRow = document.createElement("tr");
 
-            // Tạo các ô trong hàng mới
             var idCell = document.createElement("td");
-            idCell.textContent = tableBody.childElementCount + 1; // Tăng giá trị ID tự động
+            idCell.textContent = tableBody.childElementCount + 1;
             var usernameCell = document.createElement("td");
             usernameCell.textContent = username;
             var roleCell = document.createElement("td");
@@ -200,23 +239,19 @@
             var timeCell = document.createElement("td");
             timeCell.textContent = new Date().toLocaleString();
 
-            // Thêm các ô vào hàng mới
             newRow.appendChild(idCell);
             newRow.appendChild(usernameCell);
             newRow.appendChild(roleCell);
             newRow.appendChild(timeCell);
 
-            // Thêm hàng mới vào tbody của bảng
             tableBody.appendChild(newRow);
 
-            // Đặt lại giá trị của các trường nhập liệu
             document.getElementById("username").value = "";
             document.getElementById("role").value = "choose";
             advancedRoles.forEach(function (checkbox) {
                 checkbox.checked = false;
             });
 
-            // Hiển thị thông tin đã nhập trong console
             console.log("Tên người dùng: " + username);
             console.log("Quyền hạn: " + role);
             console.log("Quyền hạn nâng cao:");
@@ -226,4 +261,5 @@
             console.log("Thời gian phân quyền: " + timeCell.textContent);
         });
     </script>
-</body>
+    </body>
+

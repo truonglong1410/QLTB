@@ -1,332 +1,406 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "DSCanBo";
 }
 
-<style>
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
 
-    .content-wrapper {
-        flex: 1;
-    }
 
-    .main-footer {
-        flex-shrink: 0;
-        background-color: #ddeeff;
-        width: 100%;
-        height: 40px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        font-size: small;
-    }
-</style>
-<div class="content-wrapper">
-    <div class="container wrapperm mb-5">
-        <!-- Chú ý -->
-        
-        <div id="DSCB" class="col-md-12">
-            <h2>Danh sách cán bộ</h2>
-            <div class="form-check-inline mb-3">
-                <div class="form-group mr-4">
-                    <label for="filterDepartment">Lọc theo phòng ban:</label>
-                    <select class="form-control" id="filterDepartment">
-                        <option value="">Tất cả</option>
-                        <option value="Tổng hợp">Tổng hợp</option>
-                        <option value="Kế toán">Kế toán</option>
-                        <option value="Nhân sự">Nhân sự</option>
-                        <option value="Kỹ thuật">Kỹ thuật</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="searchName">Tìm kiếm:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="searchName" placeholder="Nhập tên, email, SĐT...">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            flex: 1;
+        }
+
+        .main-footer {
+            flex-shrink: 0;
+            background-color: #ddeeff;
+            width: 100%;
+            height: 40px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            font-size: small;
+        }
+
+        .pagination {
+            margin-top: 20px;
+        }
+    </style>
+
+    <body>
+        <div class="content-wrapper">
+            <div class="container wrapper mb-5">
+                <div id="DSCB" class="col-md-12">
+                    <h2>Danh sách người dùng</h2>
+                    <div class="form-check-inline mb-3">
+                        <div class="form-group mr-4">
+                            <label for="filterDepartment">Lọc theo phòng ban:</label>
+                            <select class="form-control" id="filterDepartment">
+                                <option value="">Tất cả</option>
+                                <option value="Tổng hợp">Tổng hợp</option>
+                                <option value="Kế toán">Kế toán</option>
+                                <option value="Nhân sự">Nhân sự</option>
+                                <option value="Kỹ thuật">Kỹ thuật</option>
+                            </select>
                         </div>
+                        <div class="form-group">
+                            <label for="searchName">Tìm kiếm:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchName" placeholder="Nhập tên, email, SĐT...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" id="searchButton" type="button">Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="employeeTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Họ và tên</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Phòng ban</th>
+                                <th>Sửa thông tin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
+                        <tbody>
+                            <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
+
+                            <tr data-department="Tổng hợp" data-gender="Nam">
+                                <td>Nguyễn Văn An</td>
+
+                                <td>nguyenvanan_01@gmail.com</td>
+                                <td>0123456789</td>
+                                <td>Tổng hợp</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-department="Kế toán" data-gender="Nữ">
+                                <td>Trần Thị Bình</td>
+
+                                <td>tranthibinh_02@gmail.com</td>
+                                <td>0135791234</td>
+                                <td>Kế toán</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr data-department="Nhân sự" data-gender="Nam">
+                                <td>Phạm Văn Chí</td>
+
+                                <td>phamvanchi_03@gmail.com</td>
+                                <td>0345825798</td>
+                                <td>Nhân sự</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr data-department="Kỹ thuật" data-gender="Nữ">
+                                <td>Nguyễn Thị Diệu</td>
+
+                                <td>nguyenthidieu_04@gmail.com</td>
+                                <td>0254825684</td>
+                                <td>Kỹ thuật</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <tr data-department="Tổng hợp" data-gender="Nam">
+                                <td>Trần Văn Em</td>
+
+                                <td>tranvanem_05@gmail.com</td>
+                                <td>0356565656</td>
+                                <td>Tổng hợp</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <tr data-department="Nhân sự" data-gender="Nữ">
+                                <td>Lê Thị Gái</td>
+
+                                <td>lethigai_06@gmail.com</td>
+                                <td>0958859958</td>
+                                <td>Nhân sự</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <tr data-department="Kế toán" data-gender="Nam">
+                                <td>Phạm Văn Giai</td>
+
+                                <td>phamvangiai_07@gmail.com</td>
+                                <td>0738856584</td>
+                                <td>Kế toán</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <tr data-department="Tổng hợp" data-gender="Nữ">
+                                <td>Hoàng Thị Hà</td>
+
+                                <td>hoangthiha_08@gmail.com</td>
+                                <td>0125489789</td>
+                                <td>Tổng hợp</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr data-department="Kỹ thuật" data-gender="Nam">
+                                <td>Trần Văn Hy</td>
+
+                                <td>tranvanhy_09@gmail.com</td>
+                                <td>0785858585</td>
+                                <td>Kỹ thuật</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <tr data-department="Kế toán" data-gender="Nữ">
+                                <td>Nguyễn Thị Kiều</td>
+
+                                <td>nguyenthikieu_10@gmail.com</td>
+                                <td>0258789963</td>
+                                <td>Kế toán</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr data-department="Kế toán" data-gender="Nữ">
+                                <td>Thái Thị Tuyền</td>
+
+                                <td>thaithituyen_11@gmail.com</td>
+                                <td>0359157759</td>
+                                <td>Nhân sự</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr data-department="Kế toán" data-gender="Nữ">
+                                <td>Lưu Chí Vỹ</td>
+
+                                <td>luuchivy_12@gmail.com</td>
+                                <td>0258369147</td>
+                                <td>Kỹ thuật</td>
+                                <td>
+                                    <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
+                                        <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
+                                    </a>
+                                    <button class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                            <!-- Thêm các hàng dữ liệu khác tương tự -->
+                        </tbody>
+                    </table>
+
+                    <!-- Phân trang -->
+                    <div class="pagination">
+                        <ul class="pagination justify-content-center">
+                            <!-- Các nút phân trang sẽ được thêm vào đây bằng JavaScript -->
+                        </ul>
                     </div>
                 </div>
             </div>
-
-            <table id="employeeTable" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Họ và tên</th>
-                        <th>Email</th>
-                        <th>Số điện thoại</th>
-                        <th>Phòng ban</th>
-                        <th>Sửa thông tin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Dữ liệu cán bộ sẽ được hiển thị ở đây -->
-                    <tr data-department="Tổng hợp" data-gender="Nam">
-                        <td>Nguyễn Văn An</td>
-                         
-                        <td>nguyenvanan_01@gmail.com</td>
-                        <td>0123456789</td>
-                        <td>Tổng hợp</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-department="Kế toán" data-gender="Nữ">
-                        <td>Trần Thị Bình</td>
-                         
-                        <td>tranthibinh_02@gmail.com</td>
-                        <td>0135791234</td>
-                        <td>Kế toán</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-                    <tr data-department="Nhân sự" data-gender="Nam">
-                        <td>Phạm Văn Chí</td>
-                         
-                        <td>phamvanchi_03@gmail.com</td>
-                        <td>0345825798</td>
-                        <td>Nhân sự</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-                    <tr data-department="Kỹ thuật" data-gender="Nữ">
-                        <td>Nguyễn Thị Diệu</td>
-                         
-                        <td>nguyenthidieu_04@gmail.com</td>
-                        <td>0254825684</td>
-                        <td>Kỹ thuật</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <tr data-department="Tổng hợp" data-gender="Nam">
-                        <td>Trần Văn Em</td>
-                         
-                        <td>tranvanem_05@gmail.com</td>
-                        <td>0356565656</td>
-                        <td>Tổng hợp</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <tr data-department="Nhân sự" data-gender="Nữ">
-                        <td>Lê Thị Gái</td>
-                         
-                        <td>lethigai_06@gmail.com</td>
-                        <td>0958859958</td>
-                        <td>Nhân sự</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <tr data-department="Kế toán" data-gender="Nam">
-                        <td>Phạm Văn Giai</td>
-                         
-                        <td>phamvangiai_07@gmail.com</td>
-                        <td>0738856584</td>
-                        <td>Kế toán</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <tr data-department="Tổng hợp" data-gender="Nữ">
-                        <td>Hoàng Thị Hà</td>
-                         
-                        <td>hoangthiha_08@gmail.com</td>
-                        <td>0125489789</td>
-                        <td>Tổng hợp</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-                    <tr data-department="Kỹ thuật" data-gender="Nam">
-                        <td>Trần Văn Hy</td>
-                         
-                        <td>tranvanhy_09@gmail.com</td>
-                        <td>0785858585</td>
-                        <td>Kỹ thuật</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <tr data-department="Kế toán" data-gender="Nữ">
-                        <td>Nguyễn Thị Kiều</td>
-                         
-                        <td>nguyenthikieu_10@gmail.com</td>
-                        <td>0258789963</td>
-                        <td>Kế toán</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-                    <tr data-department="Kế toán" data-gender="Nữ">
-                        <td>Thái Thị Tuyền</td>
-                         
-                        <td>thaithituyen_11@gmail.com</td>
-                        <td>0359157759</td>
-                        <td>Nhân sự</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-                    <tr data-department="Kế toán" data-gender="Nữ">
-                        <td>Lưu Chí Vỹ</td>
-                         
-                        <td>luuchivy_12@gmail.com</td>
-                        <td>0258369147</td>
-                        <td>Kỹ thuật</td>
-                        <td>
-                            <a href="@Url.Action("SuaTTCanBo", "SuaThongTinCanBo")" class="mx-3">
-                                <i class="fas fa-edit"></i> <!-- Icon chỉnh sửa -->
-                            </a>
-                            <button class="delete-btn">
-                                <i class="fas fa-trash-alt"></i> <!-- Icon xóa -->
-                            </button>
-                        </td>
-
-                    </tr>
-
-                    <!-- Thêm các hàng dữ liệu khác tương tự -->
-                </tbody>
-            </table>
         </div>
-        
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Script để lọc danh sách cán bộ -->
-<script>
-    $(document).ready(function () {
-        // Bắt sự kiện thay đổi trong dropdown lọc phòng ban
-        $('#filterDepartment').change(function () {
-            filterEmployees($(this).val(), $('#filterGender').val());
-        });
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var rowsPerPage = 10; // Số lượng dòng trên mỗi trang
+                var currentPage = 1; // Trang hiện tại
 
-        // Bắt sự kiện click vào nút tìm kiếm
-        $('#searchButton').click(function () {
-            var searchText = $('#searchName').val().toLowerCase();
-            filterEmployeesBySearch(searchText);
-        });
+                // Tạo các nút phân trang
+                function createPagination() {
+                    var tableRows = $('#employeeTable tbody tr');
+                    var totalPages = Math.ceil(tableRows.length / rowsPerPage);
 
-        // Hàm để lọc và hiển thị các cán bộ dựa trên phòng ban và giới tính
-        function filterEmployees(department, gender) {
-            $('#employeeTable tbody tr').each(function () {
-                var rowDepartment = $(this).data('department');
-                var rowGender = $(this).data('gender');
+                    $('.pagination').empty(); // Xóa nút phân trang cũ
 
-                if ((department === '' || rowDepartment === department) && (gender === '' || rowGender === gender)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
+                    for (var i = 1; i <= totalPages; i++) {
+                        var listItem = $('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
+                        $('.pagination').append(listItem);
+                    }
+
+                    // Bắt sự kiện khi người dùng nhấn vào một trang mới
+                    $('.pagination .page-link').click(function () {
+                        currentPage = parseInt($(this).text());
+                        showPage(currentPage);
+                    });
+
+                    // Hiển thị trang đầu tiên khi tải trang
+                    showPage(currentPage);
                 }
-            });
-        }
 
-        // Hàm để lọc và hiển thị các cán bộ dựa trên tên
-        function filterEmployeesBySearch(searchText) {
-            $('#employeeTable tbody tr').each(function () {
-                var employeeName = $(this).find('td:first-child').text().toLowerCase();
-                var employeeEmail = $(this).find('td:nth-child(2)').text().toLowerCase();
-                var employeePhone = $(this).find('td:nth-child(3)').text().toLowerCase();
+                // Hiển thị dữ liệu cho trang hiện tại
+                function showPage(pageNumber) {
+                    var startIndex = (pageNumber - 1) * rowsPerPage;
+                    var endIndex = startIndex + rowsPerPage;
 
-                if (employeeName.includes(searchText) || employeeEmail.includes(searchText) || employeePhone.includes(searchText)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
+                    $('#employeeTable tbody tr').hide(); // Ẩn tất cả các dòng
+
+                    // Hiển thị các dòng của trang hiện tại
+                    $('#employeeTable tbody tr').slice(startIndex, endIndex).show();
                 }
-            });
-        }
-    });
-    
 
-    // Xử lý sự kiện xóa cán bộ
-    document.addEventListener("DOMContentLoaded", function () {
-        var deleteButtons = document.querySelectorAll(".delete-btn");
-        deleteButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                var row = this.closest("tr");
-                if (confirm("Bạn có chắc chắn muốn xóa thông tin cán bộ này không?")) {
-                    row.remove();
+                // Bắt sự kiện thay đổi trong dropdown lọc phòng ban
+                $('#filterDepartment').change(function () {
+                    createPagination(); // Tạo lại phân trang khi thay đổi lựa chọn
+                });
+
+                // Bắt sự kiện click vào nút tìm kiếm
+                $('#searchButton').click(function () {
+                    searchEmployees();
+                });
+
+                // Bắt sự kiện nhấn phím Enter trong ô tìm kiếm
+                $('#searchName').keypress(function (e) {
+                    if (e.which == 13) {
+                        searchEmployees();
+                    }
+                });
+
+                // Hàm để lọc và hiển thị các cán bộ dựa trên phòng ban
+                function filterEmployees(department) {
+                    $('#employeeTable tbody tr').each(function () {
+                        var rowDepartment = $(this).data('department');
+
+                        if (department === '' || rowDepartment === department) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    });
                 }
+
+                // Sau khi lọc, tạo lại phân trang
+                createPagination();
+
+                // Hàm để tìm kiếm và hiển thị các cán bộ dựa trên từ khóa nhập vào
+                function searchEmployees() {
+                    var searchText = $('#searchName').val().trim().toLowerCase();
+                    $('#employeeTable tbody tr').each(function () {
+                        var employeeName = $(this).find('td:nth-child(1)').text().trim().toLowerCase();
+                        var employeeEmail = $(this).find('td:nth-child(2)').text().trim().toLowerCase();
+                        var employeePhone = $(this).find('td:nth-child(3)').text().trim().toLowerCase();
+
+                        var matchEmployeeName = employeeName.includes(searchText);
+                        var matchEmployeeEmail = employeeEmail.includes(searchText);
+                        var matchEmployeePhone = employeePhone.includes(searchText);
+
+                        var showRow = matchEmployeeName || matchEmployeeEmail || matchEmployeePhone;
+                        $(this).toggle(showRow);
+                    });
+
+                    // Sau khi tìm kiếm, tạo lại phân trang
+                    createPagination();
+                }
+
+                // Xử lý sự kiện xóa cán bộ
+                document.addEventListener("DOMContentLoaded", function () {
+                    var deleteButtons = document.querySelectorAll(".delete-btn");
+                    deleteButtons.forEach(function (button) {
+                        button.addEventListener("click", function () {
+                            var row = this.closest("tr");
+                            if (confirm("Bạn có chắc chắn muốn xóa thông tin cán bộ này không?")) {
+                                row.remove();
+                                // Sau khi xóa, tạo lại phân trang
+                                createPagination();
+                            }
+                        });
+                    });
+
+                    // Tạo phân trang khi tải trang
+                    createPagination();
+                });
             });
-        });
-    });
-</script>
+        </script>
+
+    </body>
+
+
+
+
+
+
